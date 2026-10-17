@@ -3,13 +3,30 @@ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,touch=matchMed
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
 
 /* reveal on scroll */
-var groups=['.models p','#demo .eyebrow','#demo h2','#demo .step','.aud .eyebrow','.aud h2','.bt','.why .eyebrow','.why h2','.sc','.stats > div','.stage-text > *','.stage .ph','.reviews .eyebrow','.reviews > h2','.feature','.refcol .card','.sub-eyebrow','.score','.bigs','.qwall','.media .eyebrow','.media h2','.mc','.news .eyebrow','.news h2','.nc','.how .eyebrow','.how .step','.free > *','.book h2','.book .sub','.cal-box','.contact'];
+var groups=['.models p','.aud .eyebrow','.aud h2','.bt','.why .eyebrow','.why h2','.sc','.stats > div','.stage-text > *','.reviews .eyebrow','.reviews > h2','.feature','.refcol .card','.sub-eyebrow','.score','.bigs','.qwall','.media .eyebrow','.media h2','.mc','.news .eyebrow','.news h2','.nc','.how .eyebrow','.how .step','.free > *','.book h2','.book .sub','.cal-box','.contact'];
 function mark(){groups.forEach(function(sel){$$(sel).forEach(function(el,i){if(el.hasAttribute('data-rv'))return;el.setAttribute('data-rv','');el.style.setProperty('--d',(Math.min(i%6,5)*0.08)+'s')})})}
 mark();
 if(!reduce&&'IntersectionObserver' in window){
   var io=new IntersectionObserver(function(en){en.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');io.unobserve(el);setTimeout(function(){el.classList.add('done')},1400)})},{rootMargin:'0px 0px -8% 0px',threshold:.05});
   $$('[data-rv]').forEach(function(el){io.observe(el)});
 }else{$$('[data-rv]').forEach(function(el){el.classList.add('in','done')})}
+
+var sp=$('.stage .ph.wide'),sw=$('.stage-wrap');
+if(sp&&sw){sp.setAttribute('data-rv','');if(reduce||!('IntersectionObserver' in window))sp.classList.add('in');else new IntersectionObserver(function(en,o){if(en[0].isIntersecting){sp.classList.add('in');o.disconnect()}},{threshold:.25}).observe(sw)}
+/* hero + pinned intro scene (GSAP, native scroll) */
+if(window.gsap&&window.ScrollTrigger&&!reduce){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.to('.hero-photo',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-text',{yPercent:-14,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'35% top',end:'bottom 20%',scrub:true}});
+  var mm=gsap.matchMedia();
+  mm.add('(min-width:861px)',function(){
+    var tl=gsap.timeline({scrollTrigger:{trigger:'#demo',start:'top top',end:'+=1700',scrub:1,pin:true,anticipatePin:1}});
+    tl.from('#demo .eyebrow',{opacity:0,y:20,duration:.4}).from('#demo .w',{opacity:.06,y:60,scale:.95,stagger:.45,duration:1,ease:'power2.out'},0).from('#demo .step',{opacity:0,y:80,stagger:.45,duration:1,ease:'power2.out'},'+=0.1');
+  });
+  mm.add('(max-width:860px)',function(){
+    gsap.from('#demo .eyebrow,#demo .w,#demo .step',{opacity:0,y:40,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'#demo',start:'top 80%',once:true}});
+  });
+}
 
 /* counters */
 function count(el,to,dur,fmt){var t0=null;function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur),v=to*(1-Math.pow(1-p,3));el.textContent=fmt(v);if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
