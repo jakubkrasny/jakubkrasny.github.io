@@ -24,7 +24,7 @@ var mm=gsap.matchMedia();
 mm.add('(min-width:861px)',function(){
   var tl=gsap.timeline({scrollTrigger:{trigger:'#demo',start:'top top',end:'+=1800',scrub:.6,pin:true}});
   tl.from('#demo .w',{opacity:.08,y:60,scale:.92,stagger:.4,duration:1})
-    .from('#demo .step',{opacity:0,y:80,stagger:.5,duration:1},'+=0.2');
+    .from('#demo .chips li',{opacity:0,y:20,stagger:.1,duration:.6},'+=0.1').from('#demo .step',{opacity:0,y:80,stagger:.5,duration:1},'+=0.2');
 });
 mm.add('(max-width:860px)',function(){
   gsap.from('#demo .w',{opacity:0,y:30,stagger:.2,scrollTrigger:{trigger:'#demo',start:'top 75%'}});
