@@ -32,7 +32,7 @@ mm.add('(max-width:860px)',function(){
 });
 gsap.from('.stage .ph',{clipPath:'inset(0 100% 0 0 round 28px)',duration:1.4,ease:'power3.inOut',scrollTrigger:{trigger:'.stage',start:'top 70%'}});
 gsap.from('.stage-text > *',{y:40,opacity:0,stagger:.15,scrollTrigger:{trigger:'.stage-text',start:'top 80%'}});
-gsap.from('.card',{y:70,opacity:0,stagger:.12,duration:.9,scrollTrigger:{trigger:'.cards',start:'top 85%'}});
+gsap.from('.reviews .card',{y:70,opacity:0,stagger:.12,duration:.9,scrollTrigger:{trigger:'.cards',start:'top 85%'}});
 var n={v:0};
 gsap.to(n,{v:4.7,duration:1.6,scrollTrigger:{trigger:'.score',start:'top 85%'},onUpdate:function(){document.querySelector('.num').textContent=n.v.toFixed(1).replace('.',',')}});
 gsap.from('.why .card, .why h2',{y:50,opacity:0,stagger:.12,scrollTrigger:{trigger:'.why',start:'top 75%'}});
