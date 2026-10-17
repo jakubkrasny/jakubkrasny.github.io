@@ -18,7 +18,7 @@ if(!touch&&!reduce){
     if(mascot){var r=mascot.getBoundingClientRect(),cx=r.left+r.width*.3,cy=r.top+r.height*.45,dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy)||1,k=Math.min(3,d/60);
       pupils.forEach(function(p){p.style.transform='translate('+(dx/d*k)+'px,'+(dy/d*k)+'px)'})}
   });
-  $$('.tilt,.mc,.nc,.card,.rs,.panel').forEach(function(c){
+  $$('.tilt,.mc,.nc,.card').forEach(function(c){
     c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
       c.style.transform='perspective(900px) rotateY('+x*8+'deg) rotateX('+(-y*8)+'deg) translateY(-4px)'});
     c.addEventListener('mouseleave',function(){c.style.transform=''});
@@ -34,21 +34,27 @@ var A=[["Podnikatelé","Získejte zpět svůj čas a nechte rutinu na AI."],["E-
 var R=[["1","Jedna AI platforma","Jedna platba, jeden login. Přes 20 špičkových AI nástrojů a 60 modelů na jednom místě."],["Pár kliknutí","Jednoduchost na prvním místě","Pracovat v Everbotu se naučí každý na pár kliknutí."],["Školení","Naučíme vás AI používat","Video návody, webináře a online živé workshopy s AI odborníky."],["Desítky hodin","Ušetříte čas měsíčně","Everbot vyřeší během minut to, co by vám trvalo hodiny."],["Česky","Česká zákaznická podpora","Přístup k podpoře na e-mailu a telefonu."]];
 function goBook(){var t=document.getElementById('rezervace');if(t)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
 function rotator(btnSel,panel,render,data,ms){
-  var bs=$$(btnSel);if(!bs.length||!panel)return;var cur=0,paused=false,visible=false,timer=null;
-  function set(k){cur=k;bs.forEach(function(b){b.classList.toggle('on',+b.dataset.k===k)});panel.classList.add('sw');setTimeout(function(){render(data[k]);panel.classList.remove('sw')},reduce?0:200)}
-  function tick(){if(!paused&&visible)set((cur+1)%data.length)}
-  bs.forEach(function(b){
-    b.addEventListener('mouseenter',function(){paused=true;set(+b.dataset.k)});
-    b.addEventListener('mouseleave',function(){paused=false});
-    b.addEventListener('focus',function(){set(+b.dataset.k)});
+  var bs=$$(btnSel);if(!bs.length||!panel)return;var pc=panel.querySelector('.pc'),cur=-1,paused=false,visible=false,busy=false;
+  function set(k,instant){if(k===cur||busy)return;busy=true;cur=k;
+    bs.forEach(function(b,i){b.classList.remove('on');b.classList.remove('hold');b.style.setProperty('--dur',(ms/1000)+'s');if(i===k){void b.offsetWidth;if(!reduce)b.classList.add('on');else b.classList.add('on')}});
+    if(instant||reduce){render(data[k]);busy=false;return}
+    pc.classList.add('out');setTimeout(function(){render(data[k]);pc.classList.remove('out');busy=false},320)}
+  function next(){if(visible&&!paused)set((cur+1)%data.length)}
+  bs.forEach(function(b,i){
+    b.addEventListener('mouseenter',function(){paused=true;set(i);b.classList.add('hold')});
+    b.addEventListener('mouseleave',function(){paused=false;b.classList.remove('hold')});
+    b.addEventListener('focus',function(){set(i)});
     b.addEventListener('click',goBook);
+    b.addEventListener('animationend',function(){if(b.classList.contains('on'))next()});
   });
-  panel.addEventListener('mouseenter',function(){paused=true});panel.addEventListener('mouseleave',function(){paused=false});
-  panel.addEventListener('click',function(e){if(e.target.closest('a'))return;goBook()});panel.style.cursor='pointer';
-  render(data[0]);bs[0].classList.add('on');
-  if(!reduce){new IntersectionObserver(function(en){visible=en[0].isIntersecting},{threshold:.3}).observe(panel);timer=setInterval(tick,ms)}
+  panel.addEventListener('mouseenter',function(){paused=true;bs[cur]&&bs[cur].classList.add('hold')});
+  panel.addEventListener('mouseleave',function(){paused=false;bs[cur]&&bs[cur].classList.remove('hold')});
+  panel.addEventListener('mousemove',function(e){var r=panel.getBoundingClientRect();panel.style.setProperty('--px',((e.clientX-r.left)/r.width*100)+'%');panel.style.setProperty('--py',((e.clientY-r.top)/r.height*100)+'%')});
+  panel.addEventListener('click',function(e){if(e.target.closest('a'))return;goBook()});
+  set(0,true);bs[0].classList.remove('on');
+  new IntersectionObserver(function(en){visible=en[0].isIntersecting;if(visible&&!reduce){bs[cur].classList.remove('on');void bs[cur].offsetWidth;bs[cur].classList.add('on')}},{threshold:.3}).observe(panel);
 }
-rotator('.ct',document.getElementById('audPanel'),function(d){var p=d[1].split('. ');document.getElementById('audH').textContent=p[0].replace(/\.$/,'')+'.';document.getElementById('audP').textContent=p.slice(1).join('. ')||'Na konzultaci vám ukážu, jak přesně.'},A,4200);
+rotator('.ct',document.getElementById('audPanel'),function(d){var p=d[1].split('. ');document.getElementById('audK').textContent=d[0];document.getElementById('audH').textContent=p[0].replace(/\.$/,'')+'.';document.getElementById('audP').textContent=p.slice(1).join('. ')||'Na konzultaci vám ukážu, jak přesně.'},A,4200);
 rotator('.rs',document.getElementById('rview'),function(d){document.getElementById('rn').textContent=d[0];document.getElementById('rh').textContent=d[1];document.getElementById('rp2').textContent=d[2]},R,4500);
 
 /* ---------- live news from news.json (refreshed daily by GitHub Action) ---------- */
@@ -79,8 +85,8 @@ $$('.stats b').forEach(function(el){var o={v:0},t=+el.dataset.n,suf=el.dataset.s
   gsap.to(o,{v:t,duration:1.8,ease:'power2.out',scrollTrigger:{trigger:'.stats',start:'top 85%'},onUpdate:function(){var v=Math.round(o.v);el.textContent=(t>=1000?v.toLocaleString('cs-CZ'):v)+suf}})});
 gsap.from('.stage .ph',{clipPath:'inset(0 100% 0 0 round 28px)',duration:1.4,ease:'power3.inOut',scrollTrigger:{trigger:'.stage',start:'top 70%'}});
 gsap.from('.stage-text > *',{y:40,opacity:0,stagger:.15,scrollTrigger:{trigger:'.stage-text',start:'top 80%'}});
+gsap.from('.feature',{y:60,opacity:0,scrollTrigger:{trigger:'.feature',start:'top 85%'}});
 gsap.from('.reviews .card',{y:70,opacity:0,stagger:.12,duration:.9,scrollTrigger:{trigger:'.reviews .cards',start:'top 85%'}});
-gsap.from('.quote',{y:60,opacity:0,scrollTrigger:{trigger:'.quote',start:'top 85%'}});
 var n={v:0};
 gsap.to(n,{v:4.7,duration:1.6,scrollTrigger:{trigger:'.score',start:'top 85%'},onUpdate:function(){$('.num').textContent=n.v.toFixed(1).replace('.',',')}});
 gsap.from('.media h2,.mc',{y:50,opacity:0,stagger:.08,scrollTrigger:{trigger:'.media',start:'top 70%'}});

@@ -60,7 +60,7 @@
   <div class="chiptabs" role="tablist" id="audTabs">
     <button class="ct on" data-k="0">Podnikatelé</button><button class="ct" data-k="1">E-shopy</button><button class="ct" data-k="2">Marketéři</button><button class="ct" data-k="3">Freelanceři</button><button class="ct" data-k="4">Tvůrci obsahu</button><button class="ct" data-k="5">Města a obce</button><button class="ct" data-k="6">Vzdělávání</button>
   </div>
-  <div class="panel" id="audPanel" data-go="#rezervace"><h3 id="audH"></h3><p id="audP"></p><a class="btn btn-sm" href="#rezervace">Ukázat mi to na konzultaci</a></div>
+  <div class="panel" id="audPanel"><div class="pc"><span class="pk" id="audK"></span><h3 id="audH"></h3><p id="audP"></p></div><a class="btn btn-sm" href="#rezervace">Domluvit si konzultaci →</a></div>
 </section>
 
 <section class="scene why" id="proc">
@@ -74,7 +74,7 @@
       <button class="rs" data-k="3"><b>Ušetříte čas</b><span>Desítky hodin měsíčně</span></button>
       <button class="rs" data-k="4"><b>Česká podpora</b><span>E-mail i telefon</span></button>
     </div>
-    <div class="reason-view" id="rview"><div class="big-n" id="rn"></div><h3 id="rh"></h3><p id="rp2"></p></div>
+    <div class="reason-view" id="rview"><div class="pc"><div class="big-n" id="rn"></div><h3 id="rh"></h3><p id="rp2"></p></div><a class="btn btn-sm" href="#rezervace">Chci to vidět živě →</a></div>
   </div>
   <div class="stats">
     <div><b data-n="30000" data-s="+">30 000+</b><span>uživatelů</span></div>
@@ -97,7 +97,23 @@
 </section>
 
 <section class="scene reviews" id="recenze">
-  <p class="eyebrow">Co říkají klienti Everbotu</p>
+  <p class="eyebrow">Co o mně říkají klienti</p>
+  <h2>Zákazníci mi věří. A volám jim sám.</h2>
+  <figure class="feature">
+    <div class="avatar">PM</div>
+    <div>
+      <div class="stars">★★★★★</div>
+      <blockquote>„Tohle je naprostá pecka! Umí to ohledně AI snad úplně všechno. Už jen proto, že <mark>pan Krásný pravidelně volá a ptá se, jak jsem spokojená</mark> a co by ještě pro mě mohli udělat. <mark>A taková péče se cení zlatem.</mark>“</blockquote>
+      <figcaption><b>Petra Matušková</b> · e-shop U Matušků · recenze na Googlu</figcaption>
+      <div class="links"><a href="https://www.umatusku.cz/" target="_blank" rel="noopener">Web klienta ↗</a><a href="https://www.google.com/maps/place/Everbot+s.r.o./@49.9377339,17.8883858,17z/data=!4m8!3m7!1s0x4713d9ce229b0b4f:0xa48e5402a796a87a!8m2!3d49.9377305!4d17.8909661!9m1!1b1!16s%2Fg%2F11wh6gc_nd" target="_blank" rel="noopener">Recenze na Googlu ↗</a></div>
+    </div>
+  </figure>
+  <div class="cards three refs">
+    <article class="card"><div class="stars">★★★★★</div><h3>TMJ Aviation</h3><p>Everbot jim šetří čas při dohledávání předpisů, tvorbě dokumentů, směrnic a krátkých videí.</p><div class="links"><a href="https://tmj-aviation.cz/" target="_blank" rel="noopener">Web klienta ↗</a><a href="https://www.linkedin.com/posts/jakub-kr%C3%A1sn%C3%BD-44724617a_umafxlaerinteligence-ai-podnikaernaed-ugcPost-7501151705494118400-VLF2" target="_blank" rel="noopener">LinkedIn ↗</a></div></article>
+    <article class="card"><div class="stars">★★★★★</div><h3>U Matušků</h3><p>Everbot jim každý den výrazně pomáhá s e-shopem. Oceňují nejen nástroj, ale i pravidelnou komunikaci a péči.</p><div class="links"><a href="https://www.umatusku.cz/" target="_blank" rel="noopener">Web klienta ↗</a><a href="https://www.linkedin.com/posts/jakub-kr%C3%A1sn%C3%BD-44724617a_umafxlaerinteligence-ai-podnikaernaed-ugcPost-7501151705494118400-VLF2" target="_blank" rel="noopener">LinkedIn ↗</a></div></article>
+    <article class="card"><div class="stars">★★★★★</div><h3>Ondřej Krenk</h3><p>S Everbotem spolupracuje už druhým rokem a využívá ho při práci i dalším vzdělávání.</p><div class="links"><a href="https://www.linkedin.com/posts/jakub-kr%C3%A1sn%C3%BD-44724617a_umafxlaerinteligence-ai-podnikaernaed-ugcPost-7501151705494118400-VLF2" target="_blank" rel="noopener">LinkedIn ↗</a></div></article>
+  </div>
+  <p class="eyebrow sub-eyebrow">A co říkají o Everbotu</p>
   <div class="score"><span class="num">4,7</span><span class="of">/ 5</span></div>
   <div class="cards">
     <article class="card"><h3>Adam Filip</h3><p>COO, Westlogic</p></article>
@@ -105,25 +121,7 @@
     <article class="card"><h3>Jakub Fröhlich</h3><p>Project Manager, Visibility</p></article>
     <article class="card"><h3>Ondřej Holubec</h3><p>CSO, e-shopy Fexi a Foa</p></article>
   </div>
-  <figure class="quote">
-    <blockquote>„Tohle je naprostá pecka! Umí to ohledně AI snad úplně všechno. Už jen proto, že pan Krásný pravidelně volá a ptá se, jak jsem spokojená a co by ještě pro mě mohli udělat. A taková péče se cení zlatem.“</blockquote>
-    <figcaption>Petra Matušková, e-shop U Matušků · <span class="stars">★★★★★</span> · recenze na Googlu</figcaption>
-  </figure>
-  <div class="cards three">
-    <article class="card"><h3>TMJ Aviation</h3><p>Everbot jim šetří čas při dohledávání předpisů, tvorbě dokumentů, směrnic a krátkých videí.</p></article>
-    <article class="card"><h3>U Matušků (e-shop)</h3><p>Everbot jim každý den výrazně pomáhá s e-shopem. Oceňují i pravidelnou komunikaci a péči.</p></article>
-    <article class="card"><h3>Ondřej Krenk</h3><p>S Everbotem spolupracuje už druhým rokem a využívá ho při práci i dalším vzdělávání.</p></article>
-  </div>
   <a class="link" href="https://everbot.ai/recenze" target="_blank" rel="noopener">Přečíst všechny recenze →</a>
-</section>
-
-<section class="scene how">
-  <p class="eyebrow">Jak rezervace funguje</p>
-  <div class="steps three">
-    <div class="step"><b>1</b><p>Vyberete si volný termín.</p></div>
-    <div class="step"><b>2</b><p>Vyplníte jméno, firmu a IČO.</p></div>
-    <div class="step"><b>3</b><p>Zavolám vám, doladíme detaily a schůzku potvrdím.</p></div>
-  </div>
 </section>
 
 <section class="scene media" id="media">
@@ -148,6 +146,15 @@
     <a class="nc" href="https://everbot.ai/novinky/nechte-sva-videa-promluvit-novy-ai-dabing-a-tvorba-dialogu" target="_blank" rel="noopener"><small>1. 10. 2026</small><h3>Nechte svá videa promluvit. Nový AI dabing a tvorba dialogů.</h3></a>
   </div>
   <a class="link" href="https://everbot.ai/novinky" target="_blank" rel="noopener">Všechny novinky →</a>
+</section>
+
+<section class="scene how">
+  <p class="eyebrow">Jak rezervace funguje</p>
+  <div class="steps three">
+    <div class="step"><b>1</b><p>Vyberete si volný termín.</p></div>
+    <div class="step"><b>2</b><p>Vyplníte jméno, firmu a IČO.</p></div>
+    <div class="step"><b>3</b><p>Zavolám vám, doladíme detaily a schůzku potvrdím.</p></div>
+  </div>
 </section>
 
 <section class="scene free" id="zdarma">

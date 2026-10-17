@@ -205,3 +205,35 @@ footer a{color:var(--mut)}
 @media(max-width:1000px){.mcards{grid-template-columns:1fr 1fr}.ncards{grid-template-columns:1fr 1fr}}
 @media(max-width:860px){.why-grid{grid-template-columns:1fr}.mc.hl{grid-column:span 2}}
 @media(max-width:560px){.mcards,.ncards{grid-template-columns:1fr}.mc.hl{grid-column:auto}}
+
+/* smoother rotators */
+.ct,.rs{position:relative;overflow:hidden}
+.ct::after,.rs::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--g)}
+.ct.on::after,.rs.on::after{animation:prog var(--dur,4.2s) linear forwards}
+.ct.on.hold::after,.rs.on.hold::after{animation-play-state:paused}
+.ct.on{color:#000}.ct.on::after{background:#00210f}
+@keyframes prog{to{width:100%}}
+.pc{transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .45s cubic-bezier(.2,.8,.2,1),filter .35s;will-change:transform,opacity}
+.pc.out{opacity:0;transform:translateY(14px);filter:blur(6px)}
+.panel>*,.reason-view>*{transition:none}
+.panel.sw>*,.reason-view.sw>*{opacity:1;transform:none}
+.pk{display:inline-block;color:var(--g);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.panel,.reason-view{cursor:pointer;position:relative;overflow:hidden}
+.panel::before,.reason-view::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at var(--px,70%) var(--py,30%),rgba(46,243,121,.22),transparent 45%);transition:background .2s;pointer-events:none}
+.panel>*,.reason-view>*{position:relative}
+.rs{transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .25s,background .25s}
+.rs.on{transform:translateX(10px)}
+/* reviews about me */
+.reviews h2{max-width:800px;margin-bottom:34px}
+.feature{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;padding:clamp(24px,4vw,48px);border-radius:30px;background:linear-gradient(135deg,rgba(46,243,121,.14),rgba(58,43,214,.2));border:1px solid var(--bd);margin:0}
+.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--g);color:#00210f;font-weight:800;font-size:24px;box-shadow:0 0 40px rgba(46,243,121,.4)}
+.feature blockquote{font-size:clamp(20px,2.6vw,32px);line-height:1.35;font-weight:500;letter-spacing:-.01em;margin:8px 0 18px}
+.feature mark{background:linear-gradient(transparent 62%,rgba(46,243,121,.45) 62%);color:inherit;padding:0 2px}
+.feature figcaption{color:var(--mut)}.feature figcaption b{color:var(--fg)}
+.links{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}.links a{color:var(--g);font-weight:700;font-size:14px;text-decoration:none}.links a:hover{text-decoration:underline}
+.reviews .stars{color:var(--g);letter-spacing:2px;font-size:15px}.reviews .card h3{margin-top:8px}
+.cards.refs{margin:18px 0 60px}
+.sub-eyebrow{text-align:center;margin-top:10px}
+@media(max-width:700px){.feature{grid-template-columns:1fr}}
+.reviews{text-align:left}.reviews .score,.reviews .sub-eyebrow,.reviews>.link{text-align:center;display:block}.reviews>.link{margin-top:36px}
+.feature{text-align:left}.reviews .cards .card{height:100%}
