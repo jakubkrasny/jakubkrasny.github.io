@@ -86,3 +86,25 @@ footer a{color:var(--mut)}
 .btn{box-shadow:0 0 0 0 rgba(46,243,121,.5)}
 @media(max-width:860px){.logo-pill.big img{height:46px}.logo-pill img{height:30px}.light{border-radius:28px}}
 .step b{background:linear-gradient(135deg,#2ef379,#2ef3a0)}.hero .btn{font-size:18px}
+
+.logo-pill img{height:44px}
+.pill{display:inline-block;background:rgba(46,243,121,.14);color:var(--g);border:1px solid rgba(46,243,121,.35);padding:8px 16px;border-radius:999px;font-weight:700;font-size:14px;margin-bottom:24px}
+.checks{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;color:var(--mut);font-size:14px}
+.checks li::before{content:"✓";color:var(--g);font-weight:800;margin-right:7px}
+.mascot{position:absolute;left:-30px;bottom:12%;z-index:3;display:flex;align-items:flex-end;gap:10px;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 12px 30px rgba(46,243,121,.4))}
+.bubble{background:#fff;color:#1d135e;font-weight:700;font-size:14px;padding:10px 14px;border-radius:16px 16px 16px 4px;white-space:nowrap}
+@keyframes bob{50%{transform:translateY(-12px)}}
+.pupil{transition:transform .08s linear}
+.models{position:relative;z-index:1;padding:30px 0 10px;text-align:center;overflow:hidden}
+.models p{color:var(--mut);margin-bottom:16px;font-size:15px}
+.track{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.row{display:flex;gap:14px;width:max-content;animation:slide 32s linear infinite}
+.row span{padding:11px 22px;border-radius:14px;border:1px solid var(--bd);background:var(--card);font-weight:700;white-space:nowrap}
+@keyframes slide{to{transform:translateX(-50%)}}
+.light{background:linear-gradient(180deg,#e7fbef 0%,#f0ecfd 55%)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:40px 0 10px;text-align:center}
+.stats div{padding:10px;border-right:1px solid rgba(29,19,94,.12)}.stats div:last-child{border:0}
+.stats b{display:block;font-size:clamp(26px,3.2vw,44px);letter-spacing:-.03em}
+.stats span{color:#4a4580;font-size:14px}
+@media(max-width:860px){.mascot{left:8px;bottom:6%}.stats{grid-template-columns:1fr 1fr}.stats div{border:0}.row{animation-duration:22s}}
+@media(prefers-reduced-motion:reduce){.mascot,.row{animation:none}}
