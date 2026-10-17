@@ -140,11 +140,6 @@ var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(drawL
   var sc=$$('.sc');
   if(matchMedia('(min-width:601px)').matches)sc.forEach(function(c,i){if(i===sc.length-1)return;
     gsap.to(c,{scale:.94,'--dim':.7,ease:'none',scrollTrigger:{trigger:sc[i+1],start:'top 78%',end:'top 22%',scrub:true}})});
-  // custom cursor ring
-  if(!touch&&!reduce){var cur=document.createElement('div');cur.className='cur';cur.style.opacity=0;document.body.appendChild(cur);var cx=-100,cy=-100,tx=-100,ty=-100,run=false;
-    function cl(){cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';if(Math.abs(tx-cx)>.3||Math.abs(ty-cy)>.3)requestAnimationFrame(cl);else run=false}
-    addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;cur.style.opacity=1;if(!run){run=true;requestAnimationFrame(cl)}},{passive:true});
-    document.addEventListener('mouseover',function(e){cur.classList.toggle('big',!!e.target.closest('a,button,.bt,.sc'))});}
   // headline shimmer on green text
   $$('.big .g,.hero h1 .g').forEach(function(e){e.classList.add('g-shine')});
 })();
