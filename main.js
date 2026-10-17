@@ -24,7 +24,7 @@ var mm=gsap.matchMedia();
 mm.add('(min-width:861px)',function(){
   var tl=gsap.timeline({scrollTrigger:{trigger:'#demo',start:'top top',end:'+=1800',scrub:.6,pin:true}});
   tl.from('#demo .w',{opacity:.08,y:60,scale:.92,stagger:.4,duration:1})
-    .from('#demo .chips li',{opacity:0,y:20,stagger:.1,duration:.6},'+=0.1').from('#demo .step',{opacity:0,y:80,stagger:.5,duration:1},'+=0.2');
+    .from('#demo .step',{opacity:0,y:80,stagger:.5,duration:1},'+=0.2');
 });
 mm.add('(max-width:860px)',function(){
   gsap.from('#demo .w',{opacity:0,y:30,stagger:.2,scrollTrigger:{trigger:'#demo',start:'top 75%'}});
@@ -35,6 +35,7 @@ gsap.from('.stage-text > *',{y:40,opacity:0,stagger:.15,scrollTrigger:{trigger:'
 gsap.from('.card',{y:70,opacity:0,stagger:.12,duration:.9,scrollTrigger:{trigger:'.cards',start:'top 85%'}});
 var n={v:0};
 gsap.to(n,{v:4.7,duration:1.6,scrollTrigger:{trigger:'.score',start:'top 85%'},onUpdate:function(){document.querySelector('.num').textContent=n.v.toFixed(1).replace('.',',')}});
+gsap.from('.why .card, .why h2',{y:50,opacity:0,stagger:.12,scrollTrigger:{trigger:'.why',start:'top 75%'}});
 gsap.from('.quote',{y:60,opacity:0,scrollTrigger:{trigger:'.quote',start:'top 85%'}});
 gsap.from('.how .step',{y:60,opacity:0,stagger:.2,scrollTrigger:{trigger:'.how',start:'top 75%'}});
 gsap.from('.free > *',{y:40,opacity:0,stagger:.12,scrollTrigger:{trigger:'.free',start:'top 80%'}});
