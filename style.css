@@ -349,3 +349,12 @@ h2 .wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1
 .cur{transition:width .3s,height .3s,margin .3s,background .3s,opacity .3s}
 
 .cur{display:none!important}
+
+/* oddálení a klid */
+.progress,.line{display:none!important}
+@media(min-width:1100px){body{zoom:.9}}
+.scene{padding-top:100px;padding-bottom:100px}
+.sc{min-height:200px;padding:clamp(22px,3vw,38px)}
+.sn{font-size:clamp(44px,6vw,84px)}
+.sc h3{font-size:clamp(24px,2.8vw,36px)}
+.bt.b1 h3{font-size:clamp(28px,3.4vw,44px)}

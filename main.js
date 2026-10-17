@@ -119,8 +119,6 @@ var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(drawL
 
 /* ---------- v3 extras ---------- */
 (function(){
-  var pb=document.createElement('div');pb.className='progress';document.body.appendChild(pb);
-  ScrollTrigger.create({start:0,end:'max',onUpdate:function(s){pb.style.transform='scaleX('+s.progress+')'}});
   // word-by-word headline reveal
   $$('h2').forEach(function(h){if(h.closest('.hero')||h.classList.contains('big'))return;
     var walk=function(n){[].slice.call(n.childNodes).forEach(function(c){
