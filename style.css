@@ -343,3 +343,7 @@ h2 .wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1
 .line path{opacity:.3}
 .rgrid{margin-bottom:90px}
 .sc{will-change:transform}
+
+.sc{--dim:0;overflow:hidden}
+.sc::after{content:"";position:absolute;inset:0;background:#05060f;opacity:var(--dim);pointer-events:none;border-radius:inherit}
+.cur{transition:width .3s,height .3s,margin .3s,background .3s,opacity .3s}
