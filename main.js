@@ -50,29 +50,7 @@ $$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){va
 var A=[["Podnikatelé","Získejte zpět svůj čas a nechte rutinu na AI."],["E-shopy","Produktové popisky a fotky, které okamžitě prodávají."],["Marketéři","Spusťte marketingové kampaně 10× rychleji než konkurence."],["Freelanceři","Zvládněte více zakázek v prémiové kvalitě a s menším úsilím."],["Tvůrci obsahu","Nekonečná inspirace pro vaše videa, podcasty a sociální sítě."],["Města a obce","Komunikujte s občany rychleji a efektivněji. Fungujte jako profesionální úřad i s malým týmem."],["Vzdělávání","Ušetřete čas na přípravu a věnujte ho žákům."]];
 var R=[["1","Jedna AI platforma","Jedna platba, jeden login. Přes 20 špičkových AI nástrojů a 60 modelů na jednom místě."],["Pár kliknutí","Jednoduchost na prvním místě","Pracovat v Everbotu se naučí každý na pár kliknutí."],["Školení","Naučíme vás AI používat","Video návody, webináře a online živé workshopy s AI odborníky."],["Desítky hodin","Ušetříte čas měsíčně","Everbot vyřeší během minut to, co by vám trvalo hodiny."],["Česky","Česká zákaznická podpora","Přístup k podpoře na e-mailu a telefonu."]];
 function goBook(){var t=document.getElementById('rezervace');if(!t)return;if(lenis)lenis.scrollTo(t,{duration:1.8,easing:function(x){return 1-Math.pow(1-x,4)}});else t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
-function rotator(btnSel,panel,render,data,ms){
-  var bs=$$(btnSel);if(!bs.length||!panel)return;var pc=panel.querySelector('.pc'),cur=-1,paused=false,visible=false,busy=false;
-  function set(k,instant){if(k===cur||busy)return;busy=true;cur=k;
-    bs.forEach(function(b,i){b.classList.remove('on');b.classList.remove('hold');b.style.setProperty('--dur',(ms/1000)+'s');if(i===k){void b.offsetWidth;if(!reduce)b.classList.add('on');else b.classList.add('on')}});
-    if(instant||reduce){render(data[k]);busy=false;return}
-    pc.classList.add('out');setTimeout(function(){render(data[k]);pc.classList.remove('out');busy=false},320)}
-  function next(){if(visible&&!paused)set((cur+1)%data.length)}
-  bs.forEach(function(b,i){
-    b.addEventListener('mouseenter',function(){paused=true;set(i);b.classList.add('hold')});
-    b.addEventListener('mouseleave',function(){paused=false;b.classList.remove('hold')});
-    b.addEventListener('focus',function(){set(i)});
-    b.addEventListener('click',goBook);
-    b.addEventListener('animationend',function(){if(b.classList.contains('on'))next()});
-  });
-  panel.addEventListener('mouseenter',function(){paused=true;bs[cur]&&bs[cur].classList.add('hold')});
-  panel.addEventListener('mouseleave',function(){paused=false;bs[cur]&&bs[cur].classList.remove('hold')});
-  panel.addEventListener('mousemove',function(e){var r=panel.getBoundingClientRect();panel.style.setProperty('--px',((e.clientX-r.left)/r.width*100)+'%');panel.style.setProperty('--py',((e.clientY-r.top)/r.height*100)+'%')});
-  panel.addEventListener('click',function(e){if(e.target.closest('a'))return;goBook()});
-  set(0,true);bs[0].classList.remove('on');
-  new IntersectionObserver(function(en){visible=en[0].isIntersecting;if(visible&&!reduce){bs[cur].classList.remove('on');void bs[cur].offsetWidth;bs[cur].classList.add('on')}},{threshold:.3}).observe(panel);
-}
-rotator('.ct',document.getElementById('audPanel'),function(d){var p=d[1].split('. ');document.getElementById('audK').textContent=d[0];document.getElementById('audH').textContent=p[0].replace(/\.$/,'')+'.';document.getElementById('audP').textContent=p.slice(1).join('. ')||'Na konzultaci vám ukážu, jak přesně.'},A,4200);
-rotator('.rs',document.getElementById('rview'),function(d){document.getElementById('rn').textContent=d[0];document.getElementById('rh').textContent=d[1];document.getElementById('rp2').textContent=d[2]},R,4500);
+$$('.frow').forEach(function(r){r.innerHTML+=r.innerHTML;r.querySelectorAll('.fc').forEach(function(c,i,all){if(i>=all.length/2){c.setAttribute('aria-hidden','true');c.tabIndex=-1}});var sp=+r.dataset.speed||50;r.style.animationDuration=sp+'s'});
 
 /* ---------- live news from news.json (refreshed daily by GitHub Action) ---------- */
 (function(){var box=document.getElementById('ncards');if(!box||!window.fetch)return;
