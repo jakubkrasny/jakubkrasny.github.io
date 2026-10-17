@@ -57,17 +57,25 @@
 <section class="scene app" id="aplikace">
   <p class="eyebrow">Takhle vypadá Everbot</p>
   <h2>Co dnes vytvoříte?</h2>
-  <p class="sub left">Na konzultaci si to společně vyzkoušíme na vašich vlastních věcech.</p>
-  <div class="appcards">
-    <article class="ac tilt"><div class="art art-chat"><i>GPT</i><i>Claude</i><i>Gemini</i><i>DeepSeek</i></div><h3>Chat</h3><p>Pište, ptejte se a tvořte s nejlepšími AI modely.</p></article>
-    <article class="ac tilt"><div class="art art-img"><span></span><span></span><span></span></div><h3>Grafika</h3><p>Proměňte nápad v hotový vizuál během vteřin.</p></article>
-    <article class="ac tilt"><div class="art art-vid"><b>▶</b></div><h3>Video</h3><p>Vytvořte video z textu nebo obrázku jedním klikem.</p></article>
-    <article class="ac tilt"><div class="art art-aud"><u></u><u></u><u></u><u></u><u></u><u></u><u></u></div><h3>Audio</h3><p>Převeďte řeč na text i text na přirozenou řeč.</p></article>
+  <p class="sub left">Klikněte a podívejte se. Na konzultaci to společně vyzkoušíme na vašich vlastních věcech.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-t="chat" role="tab">Chat</button>
+    <button class="tab" data-t="img" role="tab">Grafika</button>
+    <button class="tab" data-t="vid" role="tab">Video</button>
+    <button class="tab" data-t="aud" role="tab">Audio</button>
+  </div>
+  <div class="win">
+    <div class="win-bar"><i></i><i></i><i></i><span>Everbot · ukázka</span></div>
+    <div class="win-body">
+      <div class="prompt"><span class="plabel">Zadání</span><span class="ptext" id="ptext"></span><span class="caret"></span></div>
+      <div class="out" id="out"></div>
+    </div>
   </div>
   <div class="tools"><span>Multi Chat</span><span>Asistenti</span><span>Vlastní asistenti</span><span>Překladač</span><span>Hluboký výzkum</span><span>Hlas značky</span><span>Šablony</span></div>
+  <p class="note">Zjednodušená ukázka, jak Everbot funguje. Skutečné výsledky vám předvedu živě.</p>
 </section>
 
-<section class="scene why light" id="proc">
+<section class="scene why" id="proc">
   <p class="eyebrow">Proč Everbot</p>
   <h2>Jedna platforma místo desítky nástrojů.</h2>
   <div class="stats">
@@ -142,6 +150,7 @@
   <p class="contact">Raději rovnou telefonem? <a href="tel:+420733173863">+420 733 173 863</a></p>
 </section>
 </main>
+<a class="fab" href="#rezervace">Rezervovat konzultaci</a>
 
 <footer>
   <span>© Jakub Krásný · AI konzultant</span>
