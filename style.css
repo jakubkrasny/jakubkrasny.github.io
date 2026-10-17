@@ -237,3 +237,15 @@ footer a{color:var(--mut)}
 @media(max-width:700px){.feature{grid-template-columns:1fr}}
 .reviews{text-align:left}.reviews .score,.reviews .sub-eyebrow,.reviews>.link{text-align:center;display:block}.reviews>.link{margin-top:36px}
 .feature{text-align:left}.reviews .cards .card{height:100%}
+
+/* smoothness pass */
+html.lenis{scroll-behavior:auto}
+html{scroll-behavior:smooth}html.lenis,html.lenis body{scroll-behavior:auto}
+.btn{will-change:transform}.btn:hover{transform:none;box-shadow:0 10px 40px rgba(46,243,121,.5)}
+.card,.mc,.nc,.step,.panel,.reason-view,.feature,.ph{will-change:transform}
+.nav,.step,.win{backdrop-filter:blur(12px)}
+.row:hover{animation-play-state:paused}
+body{opacity:0;transition:opacity .6s ease}html.ready body{opacity:1}
+@media (prefers-reduced-motion:reduce){body{opacity:1}}
+.mc,.nc,.card{transition:border-color .4s ease,box-shadow .4s ease,background .4s ease}
+.mc:hover,.nc:hover,.card:hover{transform:none}
