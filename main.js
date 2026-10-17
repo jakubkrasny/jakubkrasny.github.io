@@ -18,3 +18,12 @@ var started=false,order=['chat','img','vid','aud'];
 function loop(){if(user)return;var n=order[(order.indexOf(cur)+1)%4];show(n);at(loop,11000)}
 var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&!started){started=true;show('chat');if(!reduceM)at(loop,11000)}})},{threshold:.35});io.observe(document.getElementById('aplikace'));
 })();
+
+// audience + reasons tabs
+(function(){
+var A=[["Podnikatelé","Získejte zpět svůj čas a nechte rutinu na AI."],["E-shopy","Produktové popisky a fotky, které okamžitě prodávají."],["Marketéři","Spusťte marketingové kampaně 10× rychleji než konkurence."],["Freelanceři","Zvládněte více zakázek v prémiové kvalitě a s menším úsilím."],["Tvůrci obsahu","Nekonečná inspirace pro vaše videa, podcasty a sociální sítě."],["Města a obce","Komunikujte s občany rychleji a efektivněji. Fungujte jako profesionální úřad i s malým týmem."],["Vzdělávání","Ušetřete čas na přípravu a věnujte ho žákům."]];
+var R=[["1","Jedna AI platforma","Jedna platba, jeden login. Přes 20 špičkových AI nástrojů a 60 modelů na jednom místě."],["Pár kliknutí","Jednoduchost na prvním místě","Pracovat v Everbotu se naučí každý na pár kliknutí."],["Školení","Naučíme vás AI používat","Video návody, webináře a online živé workshopy s AI odborníky."],["Desítky hodin","Ušetříte čas měsíčně","Everbot vyřeší během minut to, co by vám trvalo hodiny."],["Česky","Česká zákaznická podpora","Přístup k podpoře na e-mailu a telefonu."]];
+function wire(sel,panel,fn,data){var bs=document.querySelectorAll(sel);function set(k){bs.forEach(function(b){b.classList.toggle('on',b.dataset.k==k)});panel.classList.add('sw');setTimeout(function(){fn(data[k]);panel.classList.remove('sw')},180)}bs.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.k)})});fn(data[0])}
+var ap=document.getElementById('audPanel');if(ap)wire('.ct',ap,function(d){document.getElementById('audH').textContent=d[1].split('. ')[0].replace(/\.$/,'')+'.';document.getElementById('audP').textContent=d[1].split('. ').slice(1).join('. ')||'Na konzultaci vám ukážu, jak přesně.'},A);
+var rv=document.getElementById('rview');if(rv)wire('.rs',rv,function(d){document.getElementById('rn').textContent=d[0];document.getElementById('rh').textContent=d[1];document.getElementById('rp2').textContent=d[2]},R);
+})();
