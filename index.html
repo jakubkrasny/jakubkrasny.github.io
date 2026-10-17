@@ -54,34 +54,13 @@
   </div>
 </section>
 
-<section class="scene app" id="aplikace">
-  <p class="eyebrow">Takhle vypadá Everbot</p>
-  <h2>Co dnes vytvoříte?</h2>
-  <p class="sub left">Klikněte a podívejte se. Na konzultaci to společně vyzkoušíme na vašich vlastních věcech.</p>
-  <div class="tabs" role="tablist">
-    <button class="tab on" data-t="chat" role="tab">Chat</button>
-    <button class="tab" data-t="img" role="tab">Grafika</button>
-    <button class="tab" data-t="vid" role="tab">Video</button>
-    <button class="tab" data-t="aud" role="tab">Audio</button>
-  </div>
-  <div class="win">
-    <div class="win-bar"><i></i><i></i><i></i><span>Everbot · ukázka</span></div>
-    <div class="win-body">
-      <div class="prompt"><span class="plabel">Zadání</span><span class="ptext" id="ptext"></span><span class="caret"></span></div>
-      <div class="out" id="out"></div>
-    </div>
-  </div>
-  <div class="tools"><span>Multi Chat</span><span>Asistenti</span><span>Vlastní asistenti</span><span>Překladač</span><span>Hluboký výzkum</span><span>Hlas značky</span><span>Šablony</span></div>
-  <p class="note">Zjednodušená ukázka, jak Everbot funguje. Skutečné výsledky vám předvedu živě.</p>
-</section>
-
 <section class="scene aud" id="pro-koho">
   <p class="eyebrow">AI pro každého</p>
   <h2>AI platforma, kterou může používat každý.</h2>
   <div class="chiptabs" role="tablist" id="audTabs">
     <button class="ct on" data-k="0">Podnikatelé</button><button class="ct" data-k="1">E-shopy</button><button class="ct" data-k="2">Marketéři</button><button class="ct" data-k="3">Freelanceři</button><button class="ct" data-k="4">Tvůrci obsahu</button><button class="ct" data-k="5">Města a obce</button><button class="ct" data-k="6">Vzdělávání</button>
   </div>
-  <div class="panel" id="audPanel"><h3 id="audH"></h3><p id="audP"></p><a class="btn btn-sm" href="#rezervace">Ukázat mi to na konzultaci</a></div>
+  <div class="panel" id="audPanel" data-go="#rezervace"><h3 id="audH"></h3><p id="audP"></p><a class="btn btn-sm" href="#rezervace">Ukázat mi to na konzultaci</a></div>
 </section>
 
 <section class="scene why" id="proc">
@@ -151,18 +130,18 @@
   <p class="eyebrow">Everbot znáte z médií</p>
   <h2>O Everbotu se píše.</h2>
   <div class="mcards">
-    <a class="mc hl" href="https://everbot.ai/" target="_blank" rel="noopener"><span class="tag">Podcast · Focus On · 51 min</span><h3>Firma ušetřila 85 % nákladů díky Everbotu</h3><p>Host: Roman Berglowiec</p><span class="more">Přehrát na everbot.ai →</span></a>
+    <a class="mc hl" href="https://www.stream.cz/rozhovory-o-robotice/z-19-lidi-na-oddeleni-zbyli-jen-3-firma-usetrila-85-nakladu-diky-ai-65380244" target="_blank" rel="noopener"><span class="tag">Podcast · Focus On · 51 min</span><h3>Firma ušetřila 85 % nákladů díky Everbotu</h3><p>Host: Roman Berglowiec</p><span class="more">Přehrát epizodu ↗</span></a>
     <a class="mc" href="https://forbes.cz/cesky-ai-start-up-everbot-ziskal-desitky-milionu-do-hry-vstupuje-miliardar-bouska/" target="_blank" rel="noopener"><span class="tag">Forbes</span><h3>Český AI startup Everbot získal desítky milionů</h3><span class="more">Přečíst článek ↗</span></a>
     <a class="mc" href="https://cc.cz/jak-se-vyznat-v-modelech-umele-inteligence-startup-nabizi-reseni-a-nabira-desitky-milionu-korun/" target="_blank" rel="noopener"><span class="tag">CzechCrunch</span><h3>Jak se vyznat v modelech umělé inteligence?</h3><span class="more">Přečíst článek ↗</span></a>
-    <a class="mc" href="https://everbot.ai/" target="_blank" rel="noopener"><span class="tag">Časopis CHIP</span><h3>Nová česká platforma je lepší než Perplexity</h3><span class="more">Více na everbot.ai ↗</span></a>
-    <a class="mc" href="https://everbot.ai/" target="_blank" rel="noopener"><span class="tag">HROT24</span><h3>Největší česká AI platforma Everbot expanduje do Evropy</h3><span class="more">Více na everbot.ai ↗</span></a>
+    <a class="mc" href="https://www.chip.cz/novinky/everbot-ceska-ai" target="_blank" rel="noopener"><span class="tag">Časopis CHIP</span><h3>Nová česká platforma je lepší než Perplexity</h3><span class="more">Přečíst článek ↗</span></a>
+    <a class="mc" href="https://www.hrot24.cz/clanek/everbot-investice-fazole-ventures-expanze-HuWBt" target="_blank" rel="noopener"><span class="tag">HROT24</span><h3>Největší česká AI platforma Everbot expanduje do Evropy</h3><span class="more">Přečíst článek ↗</span></a>
   </div>
 </section>
 
 <section class="scene news" id="novinky">
   <p class="eyebrow">AI novinky z Everbotu</p>
   <h2>Co je u nás nového.</h2>
-  <div class="ncards">
+  <div class="ncards" id="ncards">
     <a class="nc" href="https://everbot.ai/novinky/everbot-v-zari-2026-nove-modely-jednodussi-tvorba-a-vice-moznosti-pro-vas-tym" target="_blank" rel="noopener"><small>14. 10. 2026</small><h3>Everbot v září 2026: nové modely, jednodušší tvorba a více možností pro váš tým</h3></a>
     <a class="nc" href="https://everbot.ai/novinky/nove-video-modely-v-everbotu-runway-aleph-2-0-a-seedance-2-0" target="_blank" rel="noopener"><small>11. 10. 2026</small><h3>Nové video modely v Everbotu: Runway Aleph 2.0 a Seedance 2.0</h3></a>
     <a class="nc" href="https://everbot.ai/novinky/vytvorte-si-chatbota-pro-web-a-nechte-ho-odpovidat-za-vas" target="_blank" rel="noopener"><small>4. 10. 2026</small><h3>Vytvořte si chatbota pro web a nechte ho odpovídat za vás</h3></a>
