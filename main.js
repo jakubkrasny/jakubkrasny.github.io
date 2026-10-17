@@ -89,7 +89,7 @@ reveal('.why h2,.why .rs,.why .reason-view','.why',{stagger:.08});
 reveal('.stage-text > *','.stage',{stagger:.14});
 gsap.fromTo('.stage .ph',{clipPath:'inset(0 100% 0 0 round 28px)'},{clipPath:'inset(0 0% 0 0 round 28px)',duration:1.6,ease:'power3.inOut',scrollTrigger:{trigger:'.stage',start:'top 72%',once:true}});
 reveal('.reviews h2,.feature,.reviews .cards.refs .card','.reviews',{stagger:.12});
-reveal('.reviews .cards:not(.refs) .card,.reviews .score,.reviews .sub-eyebrow','.reviews',{stagger:.1});
+reveal('.reviews .cards:not(.refs) .card,.reviews .score,.reviews .bigs,.reviews .sub-eyebrow','.reviews',{stagger:.1});
 reveal('.media h2,.mc','.media',{stagger:.09});
 reveal('.news h2,.nc','.news',{stagger:.09});
 reveal('.how .eyebrow,.how .step','.how',{stagger:.12});
