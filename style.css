@@ -70,3 +70,4 @@ footer a{color:var(--mut)}
 .quote blockquote{font-size:clamp(20px,2.4vw,28px);line-height:1.35;font-weight:500}
 .quote figcaption{margin-top:20px;color:var(--mut)}.stars{color:var(--g)}
 .cards.three{grid-template-columns:repeat(3,1fr);margin-top:28px}@media(max-width:860px){.cards.three{grid-template-columns:1fr}}
+.free{text-align:center}.free .sub{max-width:620px;margin:16px auto 32px}.link-nav{color:var(--fg);text-decoration:none;margin-left:auto;margin-right:18px;font-size:15px}.link-nav:hover{color:var(--g)}@media(max-width:560px){.link-nav{display:none}}

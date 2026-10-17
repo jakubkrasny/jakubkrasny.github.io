@@ -37,6 +37,7 @@ var n={v:0};
 gsap.to(n,{v:4.7,duration:1.6,scrollTrigger:{trigger:'.score',start:'top 85%'},onUpdate:function(){document.querySelector('.num').textContent=n.v.toFixed(1).replace('.',',')}});
 gsap.from('.quote',{y:60,opacity:0,scrollTrigger:{trigger:'.quote',start:'top 85%'}});
 gsap.from('.how .step',{y:60,opacity:0,stagger:.2,scrollTrigger:{trigger:'.how',start:'top 75%'}});
+gsap.from('.free > *',{y:40,opacity:0,stagger:.12,scrollTrigger:{trigger:'.free',start:'top 80%'}});
 gsap.from('.book h2, .book .sub, .cal-box',{y:50,opacity:0,stagger:.15,scrollTrigger:{trigger:'.book',start:'top 75%'}});
 // glowing connector line drawn on scroll
 function drawLine(){
