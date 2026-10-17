@@ -71,3 +71,4 @@ footer a{color:var(--mut)}
 .quote figcaption{margin-top:20px;color:var(--mut)}.stars{color:var(--g)}
 .cards.three{grid-template-columns:repeat(3,1fr);margin-top:28px}@media(max-width:860px){.cards.three{grid-template-columns:1fr}}
 .free{text-align:center}.free .sub{max-width:620px;margin:16px auto 32px}.link-nav{color:var(--fg);text-decoration:none;margin-left:auto;margin-right:18px;font-size:15px}.link-nav:hover{color:var(--g)}@media(max-width:560px){.link-nav{display:none}}
+.ph.wide.empty{display:none}.stage-wrap:has(.ph.wide.empty){grid-template-columns:1fr;max-width:820px}
