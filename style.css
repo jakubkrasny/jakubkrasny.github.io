@@ -289,3 +289,17 @@ body{opacity:0;transition:opacity .6s ease}html.ready body{opacity:1}
 .bigrow span{padding:14px 28px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid var(--bd);font-weight:800;font-size:clamp(16px,2vw,22px);letter-spacing:-.01em;transition:border-color .4s,background .4s}
 .bigrow span:hover{border-color:var(--g);background:rgba(46,243,121,.14)}
 .contact a{color:var(--g);font-weight:700}
+
+/* performance pass: compositor-only motion */
+.glow{position:fixed;left:0;top:0;inset:auto;width:760px;height:760px;margin:-380px 0 0 -380px;transform:translate3d(50vw,30vh,0);background:radial-gradient(circle,rgba(46,243,121,.15),transparent 62%);will-change:transform}
+.orb{filter:none}
+.o1{background:radial-gradient(circle,rgba(46,243,121,.5),transparent 68%)}
+.o2{background:radial-gradient(circle,rgba(58,43,214,.7),transparent 68%)}
+.line{display:none}
+.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(6,7,16,.88)}
+.step,.win{backdrop-filter:none}
+.card,.mc,.nc,.step,.panel,.reason-view,.feature,.ph{will-change:auto}
+.mascot{filter:none}
+.pin{min-height:auto}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
