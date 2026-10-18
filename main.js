@@ -71,6 +71,14 @@ if(!touch&&!reduce){
   $$('.bt,.sc').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.setProperty('--mx',(e.clientX-r.left)+'px');b.style.setProperty('--my',(e.clientY-r.top)+'px')})});
 }
 
+/* click effect on cards: ripple + glow flash + stays selected */
+$$('.bt,.sc').forEach(function(c){
+  function fire(x,y){var grp=c.classList.contains('bt')?'.bt':'.sc';$$(grp+'.sel').forEach(function(o){if(o!==c)o.classList.remove('sel')});c.classList.toggle('sel');
+    var r=c.getBoundingClientRect(),s=document.createElement('span');s.className='rip';var d=Math.max(r.width,r.height)*2.2;s.style.cssText='width:'+d+'px;height:'+d+'px;left:'+(x-r.left-d/2)+'px;top:'+(y-r.top-d/2)+'px';c.appendChild(s);setTimeout(function(){s.remove()},900);
+    c.classList.remove('flash');void c.offsetWidth;c.classList.add('flash')}
+  c.addEventListener('click',function(e){fire(e.clientX,e.clientY)});
+  c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();var r=c.getBoundingClientRect();fire(r.left+r.width/2,r.top+r.height/2)}})});
+
 /* bento: cards light up one by one (pauses on hover) */
 (function(){var bts=$$('.bt');if(!bts.length||reduce)return;var k=0,hov=false,vis=false;
   bts.forEach(function(b){b.addEventListener('mouseenter',function(){hov=true;bts.forEach(function(x){x.classList.remove('lit')})});b.addEventListener('mouseleave',function(){hov=false})});
