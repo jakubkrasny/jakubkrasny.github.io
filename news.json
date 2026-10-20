@@ -1,6 +1,11 @@
 {
- "updated": "2026-10-19",
+ "updated": "2026-10-20",
  "items": [
+  {
+   "date": "18. 10. 2026",
+   "title": "Everbot expanduje do Polska a přechází na doménu everbot.ai",
+   "url": "https://everbot.ai/novinky/everbot-expanduje-do-polska-a-prechazi-na-domenu-everbot-ai"
+  },
   {
    "date": "14. 10. 2026",
    "title": "Everbot v září 2026: nové modely, jednodušší tvorba a více možností pro váš tým",
@@ -25,11 +30,6 @@
    "date": "1. 10. 2026",
    "title": "Nechte svá videa promluvit. Nový AI dabing a tvorba dialogů.",
    "url": "https://everbot.ai/novinky/nechte-sva-videa-promluvit-novy-ai-dabing-a-tvorba-dialogu"
-  },
-  {
-   "date": "27. 9. 2026",
-   "title": "Co dokáže Auto-model v AI Grafice a AI Videu?",
-   "url": "https://everbot.ai/novinky/co-dokaze-auto-model-v-ai-grafice-a-ai-videu"
   }
  ]
 }
