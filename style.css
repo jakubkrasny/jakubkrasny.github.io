@@ -390,3 +390,9 @@ main{position:relative;overflow-x:clip}
 .rtrack>.bt>.btimg+h3{margin-top:2px!important}
 .aud .rtrack .bt p{font-size:14.5px}
 .tabs a{white-space:nowrap}@media(max-width:480px){.tabs a{padding:7px 10px;font-size:13px}.nav{gap:8px}.nav .btn-sm{padding:9px 14px;font-size:14px}.logo-pill img{height:32px}}
+/* modely: světlé čipy s logy jako na everbot.ai */
+.row span.mdl{display:inline-flex;align-items:center;gap:10px;padding:10px 22px 10px 16px;border-radius:999px;background:#fff;color:#0d1020;border:1px solid rgba(255,255,255,.9);font-weight:700;font-size:17px;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 0 1px rgba(46,243,121,.0);margin-right:16px}
+.row span.mdl img{height:26px;width:auto;display:block}
+.row span.mdl.more{background:rgba(255,255,255,.08);color:var(--fg);border:1px solid var(--bd);box-shadow:none;padding-left:22px}
+.models{padding:14px 0 30px}
+.models .track{padding:8px 0}
