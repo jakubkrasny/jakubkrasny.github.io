@@ -131,5 +131,13 @@ addEventListener('scroll',function(){
     gsap.to(v,{opacity:1,duration:.3,onComplete:function(){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}location.reload()}})}
 },{passive:true});
 })();
+
+/* 8) mobil: plovoucí tlačítko schovat v úvodu (je tam vlastní) a u rezervace/kontaktu (kalendář nesmí být zakrytý) */
+(function(){
+if(!('IntersectionObserver' in window)||!document.querySelector('.fab'))return;
+var vis={};function upd(){document.body.classList.toggle('fab-off',Object.keys(vis).some(function(k){return vis[k]}))}
+['hero',career?'kontakt':'rezervace'].forEach(function(id){var el=document.getElementById(id);if(!el)return;
+  new IntersectionObserver(function(en){vis[id]=en[0].intersectionRatio>(id==='hero'?.45:.15);upd()},{threshold:[0,.15,.45,.7]}).observe(el)});
+})();
 });
 })();

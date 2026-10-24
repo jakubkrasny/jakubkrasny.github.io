@@ -477,3 +477,9 @@ html.fx .hero .hero-text>.fxprompt{opacity:1}
 @keyframes fxspin{to{transform:rotate(360deg)}}
 .fxland{animation:fxland 2.2s ease-out}
 @keyframes fxland{0%{box-shadow:inset 0 0 0 2px rgba(46,243,121,.9),inset 0 0 160px rgba(46,243,121,.35)}100%{box-shadow:inset 0 0 0 2px rgba(46,243,121,0),inset 0 0 160px rgba(46,243,121,0)}}
+/* mobil */
+@media(max-width:860px){
+.fab{transition:opacity .3s,transform .3s}
+body.fab-off .fab{opacity:0;transform:translateY(24px);pointer-events:none}
+.career .hero h1{font-size:clamp(40px,11.2vw,56px)}
+}
