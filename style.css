@@ -396,3 +396,15 @@ main{position:relative;overflow-x:clip}
 .row span.mdl.more{background:rgba(255,255,255,.08);color:var(--fg);border:1px solid var(--bd);box-shadow:none;padding-left:22px}
 .models{padding:14px 0 30px}
 .models .track{padding:8px 0}
+
+/* ===== úvodní efekt (fx) ===== */
+html.fx .hero .hero-text>*,html.fx .hero .hero-photo,html.fx .hero .scroll-cue{opacity:0;animation:none;transform:none}
+html.fx .hero:not(.nm-on) .hero-text>h1{opacity:0;transition:none}
+html.fx .hero.nm-on .hero-text>h1{opacity:1;transition:opacity .35s}
+html.fx.fx-done .hero .hero-text>*,html.fx.fx-done .hero .hero-photo,html.fx.fx-done .hero .scroll-cue{opacity:1}
+html.fx .hero .scroll-cue{transform:translateX(-50%)}
+.fxcv{position:absolute;left:0;top:0;z-index:3;pointer-events:none;transition:opacity .35s}
+.fxbomb{position:absolute;z-index:5;width:16px;height:16px;border-radius:50%;background:#fff;pointer-events:none;box-shadow:0 0 30px 14px rgba(46,243,121,.95),0 0 120px 60px rgba(46,243,121,.45),0 0 260px 120px rgba(123,92,255,.25)}
+.fxring{position:absolute;z-index:4;width:40px;height:40px;border-radius:50%;border:2px solid rgba(46,243,121,.9);box-shadow:0 0 30px rgba(46,243,121,.5),inset 0 0 30px rgba(46,243,121,.3);pointer-events:none}
+.fxflash{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--ox) var(--oy),#fff 0,rgba(180,255,210,.85) 12%,rgba(46,243,121,.35) 32%,transparent 62%)}
+.hero{overflow:visible}
