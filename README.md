@@ -28,3 +28,9 @@ Tel. +420 733 173 863, e-mail jakub.krasny@everbot.ai
 
 ## Poznámky k designu
 Tmavý Everbot vzhled (DM Sans, zelená #2ef379), maskot, efekty vázané na scroll, svícení za kurzorem. Karty „AI pro každého" a „Proč Everbot" se nepřesměrovávají, jen reagují efektem. Žádné odkazy na Google recenze ani na Jakubův LinkedIn u klientů.
+
+
+## Doména (24. 10. 2026)
+- Web běží na https://jakubkrasny.cz (CNAME v repozitáři, WEDOS DNS: 4× A na GitHub Pages + www CNAME, HTTPS vynucené). Skrytý nábor: /nabor/.
+- Rezervace: Cal.com + Apps Script `apps-script/CalMail.gs` (časovač 5 min) → tabulka Žádosti o konzultaci z webu + uvítací e-mail.
+- Prodloužení domény: WEDOS, ~194 Kč/rok.
