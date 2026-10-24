@@ -4,7 +4,7 @@ var $=function(s){return document.querySelector(s)},$$=function(s){return [].sli
 
 var useG=!!(window.gsap&&window.ScrollTrigger)&&!reduce;
 /* reveal on scroll */
-var groups=['.models p','.stats > div','.stage-text > *','.sub-eyebrow','.score','.bigs','.qwall','.media .eyebrow','.media h2','.mc','.news .eyebrow','.news h2','.nc','.how .eyebrow','.how .step','.free > *','.book h2','.book .sub','.cal-box','.contact'];
+var groups=['.models p','.stats > div','.stage-text > *','.sub-eyebrow','.score','.bigs','.qwall','.news .eyebrow','.news h2','.nc','.how .eyebrow','.how .step','.free > *','.book h2','.book .sub','.cal-box','.contact'];
 function mark(){groups.forEach(function(sel){$$(sel).forEach(function(el,i){if(el.hasAttribute('data-rv'))return;el.setAttribute('data-rv','');el.style.setProperty('--d',(Math.min(i%6,5)*0.08)+'s')})})}
 mark();
 if(!useG&&!reduce&&'IntersectionObserver' in window){
@@ -17,8 +17,8 @@ if(sp&&sw){sp.setAttribute('data-rv','');if(reduce||!('IntersectionObserver' in 
 /* hero + pinned intro scene (GSAP, native scroll) */
 if(window.gsap&&window.ScrollTrigger&&!reduce){
   gsap.registerPlugin(ScrollTrigger);
-  gsap.to('.hero-photo',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.to('.hero-text',{yPercent:-14,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'35% top',end:'bottom 20%',scrub:true}});
+  if($('.hero'))gsap.to('.hero-photo',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  if($('.hero'))gsap.to('.hero-text',{yPercent:-14,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'35% top',end:'bottom 20%',scrub:true}});
   /* everything moves with the scroll (scrubbed) */
   $$('[data-rv]').forEach(function(el){if(el.matches('.ph.wide'))return;
     el.removeAttribute('data-rv');
@@ -33,17 +33,22 @@ if(window.gsap&&window.ScrollTrigger&&!reduce){
   var tk=$$('.track,.qwall'),skew=gsap.quickTo?tk.map(function(t){return gsap.quickTo(t,'skewX',{duration:.5,ease:'power3.out'})}):[];
   ScrollTrigger.create({onUpdate:function(s){var v=Math.max(-7,Math.min(7,s.getVelocity()/-260));skew.forEach(function(q){q(v)})}});
   /* mascot rides along */
-  gsap.to('#mascot',{y:-60,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  if($('#mascot'))gsap.to('#mascot',{y:-60,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   var mm=gsap.matchMedia();
-  mm.add('(min-width:861px)',function(){
+  if($('#demo'))mm.add('(min-width:861px)',function(){
     var tl=gsap.timeline({scrollTrigger:{trigger:'#demo',start:'top top',end:'+=1700',scrub:1,pin:true,anticipatePin:1}});
     tl.from('#demo .eyebrow',{opacity:0,y:20,duration:.4}).from('#demo .w',{opacity:.06,y:60,scale:.95,stagger:.45,duration:1,ease:'power2.out'},0).from('#demo .step',{opacity:0,y:80,stagger:.45,duration:1,ease:'power2.out'},'+=0.1');
   });
-  mm.add('(max-width:860px)',function(){
+  if($('#demo'))mm.add('(max-width:860px)',function(){
     gsap.from('#demo .eyebrow,#demo .w,#demo .step',{opacity:0,y:40,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'#demo',start:'top 80%',once:true}});
   });
 }
 
+
+
+/* Everbot logo jako podkres sekcí */
+$$('.railsec,.reviews2').forEach(function(sec,i){var w=document.createElement('div');w.className='wm '+(i%2?'r':'l')+(i%3==0?' rot':'');sec.insertBefore(w,sec.firstChild);
+  if(useG)gsap.fromTo(w,{y:60,rotation:i%2?10:-10},{y:-60,rotation:i%2?-8:8,ease:'none',scrollTrigger:{trigger:sec,start:'top bottom',end:'bottom top',scrub:1}})});
 
 /* rails: karusel pripnuty na strance, posouva se se scrollem */
 $$('.railsec').forEach(function(sec){
@@ -91,12 +96,12 @@ if(!touch&&!reduce){
       pupils.forEach(function(p){p.style.transform='translate('+(dx/d*k).toFixed(2)+'px,'+(dy/d*k).toFixed(2)+'px)'})}
     if(Math.abs(mx-gx)>.4||Math.abs(my-gy)>.4)requestAnimationFrame(loop);else run=false}
   addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(!run){run=true;requestAnimationFrame(loop)}},{passive:true});
-  $$('.bt,.sc').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.setProperty('--mx',(e.clientX-r.left)+'px');b.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+  $$('.bt,.sc,.uc').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.setProperty('--mx',(e.clientX-r.left)+'px');b.style.setProperty('--my',(e.clientY-r.top)+'px')})});
 }
 
 /* click effect on cards: ripple + glow flash + stays selected */
-$$('.bt,.sc').forEach(function(c){
-  function fire(x,y){var grp=c.classList.contains('bt')?'.bt':'.sc';$$(grp+'.sel').forEach(function(o){if(o!==c)o.classList.remove('sel')});c.classList.toggle('sel');
+$$('.bt,.sc,.uc').forEach(function(c){
+  function fire(x,y){var grp=c.classList.contains('bt')?'.bt':c.classList.contains('uc')?'.uc':'.sc';$$(grp+'.sel').forEach(function(o){if(o!==c)o.classList.remove('sel')});c.classList.toggle('sel');
     var r=c.getBoundingClientRect(),s=document.createElement('span');s.className='rip';var d=Math.max(r.width,r.height)*2.2;s.style.cssText='width:'+d+'px;height:'+d+'px;left:'+(x-r.left-d/2)+'px;top:'+(y-r.top-d/2)+'px';c.appendChild(s);setTimeout(function(){s.remove()},900);
     c.classList.remove('flash');void c.offsetWidth;c.classList.add('flash')}
   c.addEventListener('click',function(e){fire(e.clientX,e.clientY)});

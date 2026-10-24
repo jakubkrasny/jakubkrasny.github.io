@@ -221,7 +221,7 @@ h1{font-size:clamp(56px,10vw,140px)}
 .bt:focus-visible,.sc:focus-visible{outline:2px solid var(--g);outline-offset:3px}
 
 /* ===== v6: karusely (rail) – jedna velikost karet, posun se scrollem ===== */
-.railsec{max-width:none;padding:90px 0 50px;display:flex;flex-direction:column;justify-content:center;min-height:100vh;position:relative}
+.railsec{max-width:none;padding:104px 0 44px;display:flex;flex-direction:column;justify-content:center;min-height:100vh;position:relative}
 .railsec>.eyebrow,.railsec>h2,.railsec>.cta,.rail-ui{width:100%;max-width:var(--max);margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
 .railsec>h2{margin-bottom:6px}
 .rail{margin-top:34px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:26px 0 34px;perspective:1400px}
@@ -257,3 +257,84 @@ h1{font-size:clamp(56px,10vw,140px)}
 #rvtrack .card>.stars{order:0}#rvtrack .card>p,#rvtrack .card>blockquote{order:1;margin:0}
 #rvtrack .rhead{order:2;margin-top:auto}#rvtrack .links{order:3}
 #rvtrack .card:not(.hl)>p{font-size:19px;line-height:1.45;color:var(--fg)}
+
+/* ===== v7: atmosféra sekcí, grafika, nové karty ===== */
+:root{--p:#7b5cff;--o:#ff9a4d;--b:#3d7bff}
+main{position:relative;overflow-x:clip}
+.scene{position:relative}
+/* každá sekce má vlastní barevnou atmosféru + logo-podkres */
+.railsec::before,.statsec::before,.reviews2::before,.stage::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none}
+.uses::before{background:radial-gradient(60% 55% at 85% 20%,rgba(255,154,77,.16),transparent 70%),radial-gradient(55% 60% at 8% 85%,rgba(46,243,121,.14),transparent 70%)}
+.aud::before{background:radial-gradient(65% 60% at 10% 15%,rgba(123,92,255,.28),transparent 70%),radial-gradient(50% 55% at 95% 90%,rgba(61,123,255,.2),transparent 70%)}
+.why::before{background:radial-gradient(60% 60% at 92% 12%,rgba(46,243,121,.2),transparent 70%),radial-gradient(55% 55% at 5% 90%,rgba(46,243,160,.12),transparent 70%)}
+.reviews::before{background:radial-gradient(60% 60% at 80% 85%,rgba(123,92,255,.26),transparent 70%),radial-gradient(50% 50% at 10% 10%,rgba(255,154,77,.12),transparent 70%)}
+.media::before{background:radial-gradient(60% 60% at 12% 80%,rgba(61,123,255,.24),transparent 70%),radial-gradient(50% 55% at 90% 10%,rgba(46,243,121,.13),transparent 70%)}
+.statsec::before{background:linear-gradient(90deg,transparent,rgba(46,243,121,.07),transparent)}
+.reviews2::before{background:radial-gradient(70% 60% at 50% 0%,rgba(123,92,255,.2),transparent 70%)}
+/* jemná mřížka + maskot jako podkres */
+.railsec::after{content:"";position:absolute;inset:0 0 0 50%;width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Ccircle cx='2' cy='2' r='1.2' fill='%23ffffff' fill-opacity='.07'/%3E%3C/svg%3E");
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(180deg,transparent,#000 20%,#000 80%,transparent)}
+.wm{position:absolute;z-index:-1;pointer-events:none;width:min(560px,60vw);aspect-ratio:1;opacity:.08;will-change:transform;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='8' width='56' height='44' rx='16' fill='none' stroke='%232ef379' stroke-width='1.2'/%3E%3Cpath d='M18 52 L14 62 L28 52Z' fill='none' stroke='%232ef379' stroke-width='1.2' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='29' r='6.5' fill='none' stroke='%232ef379' stroke-width='1.2'/%3E%3Ccircle cx='40' cy='29' r='6.5' fill='none' stroke='%232ef379' stroke-width='1.2'/%3E%3C/svg%3E") center/contain no-repeat}
+.wm.l{left:-8%;top:8%}.wm.r{right:-8%;bottom:4%}.wm.rot{transform:rotate(-12deg)}
+.railsec>.eyebrow,.railsec>h2{position:relative}
+/* záložky v hlavičce */
+.tabs{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--bd);margin:0 auto}
+.tabs a{padding:8px 18px;border-radius:999px;color:var(--mut);text-decoration:none;font-weight:700;font-size:15px;transition:.25s}
+.tabs a:hover{color:var(--fg)}.tabs a.on{background:var(--g);color:#06140c}
+.nav{gap:14px}
+@media(max-width:860px){.tabs{margin:0 0 0 auto}.tabs a{padding:7px 12px;font-size:14px}.nav .link-nav{display:none}}
+/* karty "co zvládnete" */
+.uc{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:6px;padding:0!important;border-radius:26px;border:1px solid var(--bd);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));cursor:pointer;transition:border-color .4s,box-shadow .4s}
+.uc .ucimg{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;padding:14px;position:relative;overflow:hidden}
+.uc.g .ucimg{background:radial-gradient(80% 90% at 50% 100%,rgba(46,243,121,.38),rgba(46,243,121,.05) 70%)}
+.uc.p .ucimg{background:radial-gradient(80% 90% at 50% 100%,rgba(123,92,255,.5),rgba(123,92,255,.06) 70%)}
+.uc.o .ucimg{background:radial-gradient(80% 90% at 50% 100%,rgba(255,154,77,.42),rgba(255,154,77,.06) 70%)}
+.uc .ucimg img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.uc:hover .ucimg img,.uc.act .ucimg img{transform:scale(1.06) translateY(-4px)}
+.uc h3{padding:0 24px;font-size:clamp(20px,1.9vw,25px);line-height:1.12;letter-spacing:-.02em;margin:0!important}
+.uc b{padding:0 24px;color:var(--g);font-size:17px}
+.uc p{padding:0 24px 22px;color:var(--mut);font-size:14.5px;margin:0}
+.rtrack>.uc{justify-content:flex-start!important;padding:0!important;height:clamp(340px,50vh,440px)!important}
+.rtrack>.uc.act{border-color:rgba(46,243,121,.7);box-shadow:0 24px 70px rgba(46,243,121,.2)}
+/* Proč Everbot: obrázek v kartě */
+.rtrack>.sc{padding:0!important;justify-content:flex-start!important;height:clamp(360px,52vh,450px)!important}
+.sc .scimg{flex:0 0 52%;background:#eaf7f0;overflow:hidden;position:relative}
+.sc .scimg img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.sc:hover .scimg img,.sc.act .scimg img{transform:scale(1.07)}
+.rtrack>.sc>div:last-child{padding:20px 24px 24px!important;flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:6px}
+.rtrack .sc h3{font-size:clamp(20px,1.8vw,24px)!important}
+/* výsledky */
+.results{margin:10px 0 56px}.results .bigs-t{text-align:center}
+.rgrid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.story{padding:30px;border-radius:26px;border:1px solid var(--bd);background:linear-gradient(145deg,rgba(123,92,255,.2),rgba(46,243,121,.08))}
+.story h3{font-size:26px;letter-spacing:-.02em}.story small{color:var(--mut);display:block;margin:2px 0 14px}
+.story ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}.story li{color:var(--mut);font-size:15px;line-height:1.3}.story li b{display:block;color:var(--g);font-size:clamp(26px,3vw,38px);letter-spacing:-.03em;line-height:1}
+.story p{margin-top:16px;color:var(--fg);font-style:italic;font-size:15px;line-height:1.5}
+.score .sl{flex-basis:100%;text-align:center;color:var(--mut);font-size:14px;margin-top:4px}.score{flex-wrap:wrap}
+@media(max-width:860px){.rgrid2{grid-template-columns:1fr}.story ul{grid-template-columns:1fr 1fr}.rtrack>.uc,.rtrack>.sc{height:auto!important;min-height:360px!important}.uc .ucimg{min-height:170px}.sc .scimg{flex-basis:170px}}
+/* media karusel */
+.media .rtrack .mc{display:flex;flex-direction:column;justify-content:flex-end;gap:10px;grid-column:auto}
+.media .rtrack .mc h3{font-size:clamp(22px,2.1vw,28px)!important;line-height:1.14}
+.media .rtrack .mc .tag{align-self:flex-start}
+.rtrack .mc.act{border-color:rgba(46,243,121,.7);box-shadow:0 24px 70px rgba(46,243,121,.18)}
+.rtrack>.mc,.rtrack>.uc{flex-basis:clamp(290px,27vw,390px)!important}
+#rvtrack mark{background:linear-gradient(transparent 62%,rgba(46,243,121,.45) 62%);color:inherit;padding:0 2px}
+.story ul{padding:0;margin:0}.story li{padding:0}
+/* ===== kariéra ===== */
+.btn.ghost{background:transparent;color:var(--fg);border:1.5px solid rgba(255,255,255,.3)}.btn.ghost:hover{box-shadow:0 12px 40px rgba(123,92,255,.35);border-color:var(--g)}
+.tlsec{padding-top:90px}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;position:relative}
+.tl::before{content:"";position:absolute;left:5%;right:5%;top:23px;height:2px;background:linear-gradient(90deg,var(--g),var(--p));opacity:.5}
+.tstep{position:relative;padding-top:6px}
+.tstep b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--g);color:#06140c;font-size:19px;position:relative;box-shadow:0 0 0 7px var(--bg),0 0 30px rgba(46,243,121,.4);margin-bottom:18px}
+.tstep h3{font-size:19px;margin-bottom:6px}.tstep p{color:var(--mut);font-size:15px}
+.teamsec{max-width:none;padding-left:0;padding-right:0;overflow:hidden}
+.teamsec>.eyebrow,.teamsec>h2{max-width:var(--max);margin-left:auto;margin-right:auto;padding:0 24px}
+.phtrack{overflow:hidden;margin-top:34px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.phrow{display:flex;gap:0;width:max-content;animation:slide 70s linear infinite}
+.phrow img{margin-right:16px;height:clamp(200px,28vw,300px);width:auto;border-radius:22px;border:1px solid var(--bd);display:block}
+.career .hero .ph{aspect-ratio:4/3;max-height:none}
+@media(max-width:860px){.tl{grid-template-columns:1fr}.tl::before{display:none}.tstep{display:grid;grid-template-columns:56px 1fr;gap:0 14px}.tstep b{grid-row:span 2;margin:0}}
+.career .hero .ph{width:100%;margin:0}.career .hero-photo{align-self:center}
