@@ -219,3 +219,41 @@ h1{font-size:clamp(56px,10vw,140px)}
 .bt.sel,.sc.sel{border-color:var(--g);background:linear-gradient(145deg,rgba(46,243,121,.2),rgba(58,43,214,.2));box-shadow:0 18px 60px rgba(46,243,121,.2)}
 .bt.sel::before,.sc.sel::before{opacity:1}
 .bt:focus-visible,.sc:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+
+/* ===== v6: karusely (rail) – jedna velikost karet, posun se scrollem ===== */
+.railsec{max-width:none;padding:90px 0 50px;display:flex;flex-direction:column;justify-content:center;min-height:100vh;position:relative}
+.railsec>.eyebrow,.railsec>h2,.railsec>.cta,.rail-ui{width:100%;max-width:var(--max);margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+.railsec>h2{margin-bottom:6px}
+.rail{margin-top:34px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:26px 0 34px;perspective:1400px}
+.rail::-webkit-scrollbar{display:none}
+.rail.pinned{overflow:hidden}
+.rtrack{display:flex!important;gap:22px;width:max-content;margin:0!important;padding:0 max(24px,calc((100vw - var(--max))/2 + 24px));grid-template-columns:none!important}
+.rtrack>*{flex:0 0 clamp(290px,27vw,390px)!important;grid-column:auto!important;grid-row:auto!important;height:clamp(300px,40vh,370px)!important;min-height:0!important;scroll-snap-align:center;justify-content:flex-end!important;padding:30px!important;will-change:transform,opacity}
+.rtrack .bt h3,.rtrack .sc h3{font-size:clamp(26px,2.5vw,34px)!important;margin:0!important;letter-spacing:-.025em;line-height:1.1}
+.rtrack .bt.b1,.rtrack .sc:nth-child(1){background:linear-gradient(145deg,rgba(46,243,121,.14),rgba(58,43,214,.22))}
+.rtrack .bt b{font-size:17px!important}
+.rtrack .bt.act,.rtrack .sc.act,.rtrack .card.act{border-color:rgba(46,243,121,.7);box-shadow:0 24px 70px rgba(46,243,121,.18)}
+.rtrack .bt.act::before,.rtrack .sc.act::before{opacity:1}
+/* reference */
+.rvtrack>*,#rvtrack>.card{flex-basis:clamp(300px,31vw,460px)!important;display:flex;flex-direction:column;gap:12px;border-radius:26px;margin:0}
+#rvtrack .card p{font-size:16.5px;line-height:1.5;margin-top:4px}
+#rvtrack .card.hl{background:linear-gradient(145deg,rgba(46,243,121,.14),rgba(58,43,214,.22))}
+#rvtrack .card.hl blockquote{font-size:clamp(16px,1.35vw,19px);line-height:1.5;font-weight:500}
+#rvtrack .card.hl mark{background:linear-gradient(transparent 62%,rgba(46,243,121,.45) 62%);color:inherit;padding:0 2px}
+#rvtrack .rhead{margin-top:auto;display:flex;align-items:center;gap:12px}
+#rvtrack .rhead h3{font-size:19px;line-height:1.2}#rvtrack .rhead small{display:block;color:var(--mut);font-weight:400;font-size:13.5px;margin-top:2px}
+#rvtrack .links{margin-top:0}
+#rvtrack .card:not(.hl){justify-content:flex-start}
+/* ovládání */
+.rail-ui{display:flex;align-items:center;gap:18px;margin-top:2px}
+.rail-bar{flex:1;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.rail-bar i{display:block;height:100%;width:100%;background:var(--g);transform-origin:left;transform:scaleX(.05);border-radius:3px}
+.rail-n{font-weight:700;color:var(--mut);font-variant-numeric:tabular-nums;min-width:64px;text-align:right}.rail-n b{color:var(--g)}
+.railsec>.cta{margin-top:22px}
+.statsec{padding:70px 24px}.statsec .stats{margin:0}
+.reviews2{padding-top:60px}
+@media(max-width:860px){.railsec{min-height:0;padding:64px 0 40px}.rtrack>*{height:auto!important;min-height:250px!important}.rail-ui{display:none}.rtrack{padding:0 18px}.rtrack>*{flex-basis:80vw!important}}
+#rvtrack .card{justify-content:flex-start!important}
+#rvtrack .card>.stars{order:0}#rvtrack .card>p,#rvtrack .card>blockquote{order:1;margin:0}
+#rvtrack .rhead{order:2;margin-top:auto}#rvtrack .links{order:3}
+#rvtrack .card:not(.hl)>p{font-size:19px;line-height:1.45;color:var(--fg)}
