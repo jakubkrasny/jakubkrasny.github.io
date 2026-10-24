@@ -456,3 +456,18 @@ html.fx .hero .hero-text>.fxprompt{opacity:1}
 .fxbox span b{font-weight:800}
 .fxbox.b2{border-color:#fff;box-shadow:0 0 22px rgba(255,255,255,.4)}.fxbox.b2 span{background:#fff}
 .fxdot{position:absolute;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:#2ef379;box-shadow:0 0 10px #2ef379}
+/* efekty na celé stránce */
+.fxbar{position:fixed;left:0;top:0;right:0;height:3px;z-index:100;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#2ef379,#7cf7d0,#7b5cff);box-shadow:0 0 14px rgba(46,243,121,.8);pointer-events:none}
+.fxbg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.fxguide{position:fixed;left:22px;bottom:22px;z-index:45;width:290px;padding:12px 14px 14px;border-radius:18px;background:rgba(12,16,32,.82);backdrop-filter:blur(14px);border:1px solid rgba(46,243,121,.4);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(46,243,121,.12);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s,transform .4s}
+.fxguide.on{opacity:1;transform:none;pointer-events:auto}
+.fxg-h{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--mut,#9aa3c0);margin-bottom:8px}
+.fxg-h b{color:#fff}.fxg-dot{width:9px;height:9px;border-radius:50%;background:#2ef379;box-shadow:0 0 12px #2ef379;animation:fxpulse 1.6s ease-in-out infinite}
+.fxg-h button{margin-left:auto;background:none;border:0;color:#9aa3c0;font-size:20px;line-height:1;cursor:pointer;padding:0 2px}
+.fxguide p{margin:0;font-size:14.5px;line-height:1.45;color:#fff;min-height:42px}
+.fxguide p.typing:after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-.12em;background:#2ef379;animation:blink .5s steps(2) infinite}
+@keyframes fxpulse{50%{transform:scale(1.35);opacity:.6}}
+.fxspot{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(260px circle at var(--sx,50%) var(--sy,50%),rgba(46,243,121,.16),transparent 65%);z-index:2}
+:hover>.fxspot{opacity:1}
+.uc,.bt,.sc,.card,.mc,.vc,.step,.story{position:relative}
+@media(max-width:860px){.fxguide{display:none}}
