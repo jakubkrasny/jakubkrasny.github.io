@@ -91,5 +91,40 @@ document.querySelectorAll('.btn').forEach(function(b){
   b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);b.style.translate=(dx*.18)+'px '+(dy*.3)+'px'});
   b.addEventListener('pointerleave',function(){b.style.translate='0 0'})});
 }
+
+/* 6) přechod na rezervaci: "warp" skok s paprsky, pak rozsvícení kalendáře */
+(function(){
+if(!window.gsap)return;
+var targetId=career?'kontakt':'rezervace',tgt=document.getElementById(targetId);if(!tgt)return;
+var busy=false;
+function warp(href){
+  if(busy)return;busy=true;
+  var cv=document.createElement('canvas'),dpr=Math.min(2,devicePixelRatio||1),W=innerWidth,H=innerHeight;cv.className='fxwarp';cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';document.body.appendChild(cv);
+  var cx=cv.getContext('2d');cx.scale(dpr,dpr);
+  var N=170,S=[];for(var i=0;i<N;i++)S.push({a:Math.random()*6.283,r:Math.random()*.15,v:.35+Math.random()*1.1,l:.05+Math.random()*.25});
+  var y0=scrollY,y1=Math.max(0,tgt.getBoundingClientRect().top+scrollY-(innerWidth<860?10:70)),st={k:0},mx=W/2,my=H/2;
+  var dist=Math.abs(y1-y0),dur=Math.min(1.9,Math.max(.9,dist/3200)),R=Math.hypot(W,H)/2;
+  var lab=document.createElement('div');lab.className='fxwl';lab.textContent='Otevírám kalendář…';document.body.appendChild(lab);
+  gsap.fromTo(lab,{opacity:0,y:14},{opacity:1,y:0,duration:.35});
+  gsap.to(st,{k:1,duration:dur,ease:'power3.inOut',
+    onUpdate:function(){
+      window.scrollTo(0,y0+(y1-y0)*st.k);
+      var e=Math.sin(Math.PI*st.k),sp=e;cx.clearRect(0,0,W,H);
+      var g=cx.createRadialGradient(mx,my,0,mx,my,R);g.addColorStop(0,'rgba(46,243,121,'+(.0+.22*e)+')');g.addColorStop(.5,'rgba(10,14,30,'+(.35*e)+')');g.addColorStop(1,'rgba(4,6,14,'+(.7*e)+')');cx.fillStyle=g;cx.fillRect(0,0,W,H);
+      cx.lineCap='round';
+      S.forEach(function(s){s.r+=s.v*.012*(.3+sp*2.4);if(s.r>1.1){s.r=Math.random()*.05;s.a=Math.random()*6.283}
+        var r0=s.r*R,r1=(s.r+s.l*sp*1.5+.01)*R,c=Math.cos(s.a),sn=Math.sin(s.a);
+        cx.strokeStyle='rgba('+(s.v>1?'220,255,235':'46,243,121')+','+(Math.min(1,s.r*1.4)*(.15+.85*sp))+')';cx.lineWidth=.6+s.r*2.4;
+        cx.beginPath();cx.moveTo(mx+c*r0,my+sn*r0);cx.lineTo(mx+c*r1,my+sn*r1);cx.stroke()})},
+    onComplete:function(){
+      try{history.pushState(null,'','#'+targetId)}catch(e){}
+      gsap.to(lab,{opacity:0,y:-10,duration:.3,onComplete:function(){lab.remove()}});
+      gsap.to(cv,{opacity:0,duration:.55,onComplete:function(){cv.remove();busy=false}});
+      tgt.classList.remove('fxland');void tgt.offsetWidth;tgt.classList.add('fxland');setTimeout(function(){tgt.classList.remove('fxland')},2200);
+      var ring=document.createElement('div');ring.className='fxlring';document.body.appendChild(ring);
+      gsap.fromTo(ring,{scale:.1,opacity:.9},{scale:9,opacity:0,duration:1.1,ease:'power2.out',onComplete:function(){ring.remove()}})}});
+}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#'+targetId+'"]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey)return;if(a.closest('nav')&&false)return;e.preventDefault();warp()},true);
+})();
 });
 })();
