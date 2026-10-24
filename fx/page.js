@@ -99,6 +99,10 @@ var targetId=career?'kontakt':'rezervace',tgt=document.getElementById(targetId);
 var busy=false;
 function warp(){
   if(busy)return;busy=true;
+  var yy=Math.max(0,tgt.getBoundingClientRect().top+scrollY-(innerWidth<860?10:70));
+  if(Math.abs(yy-scrollY)<innerHeight*3){/* krátká vzdálenost: plynulý posun bez zatemnění */
+    var o={y:scrollY};gsap.to(o,{y:yy,duration:Math.max(.6,Math.min(1.1,Math.abs(yy-scrollY)/2400)),ease:'power2.inOut',onUpdate:function(){window.scrollTo(0,o.y)},onComplete:function(){try{history.pushState(null,'','#'+targetId)}catch(e){}busy=false;tgt.classList.remove('fxland');void tgt.offsetWidth;tgt.classList.add('fxland');setTimeout(function(){tgt.classList.remove('fxland')},2200)}});
+    return}
   var ov=document.createElement('div');ov.className='fxveil';ov.innerHTML='<span><i></i>Otevírám kalendář</span>';document.body.appendChild(ov);
   var lab=ov.firstChild,y1=Math.max(0,tgt.getBoundingClientRect().top+scrollY-(innerWidth<860?10:70));
   var kids=[].slice.call(tgt.children);
@@ -114,6 +118,18 @@ function warp(){
     .add(function(){tgt.classList.remove('fxland');void tgt.offsetWidth;tgt.classList.add('fxland');setTimeout(function(){tgt.classList.remove('fxland')},2200)},1.0);
 }
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#'+targetId+'"]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey)return;if(a.closest('nav')&&false)return;e.preventDefault();warp()},true);
+})();
+
+/* 7) návrat nahoru: úvodní efekt se přehraje znovu (po jemném zatemnění se stránka sama obnoví) */
+(function(){
+var hero=document.querySelector('.hero');if(!hero)return;var away=false,going=false;
+addEventListener('scroll',function(){
+  if(scrollY>innerHeight*1.5)away=true;
+  if(away&&!going&&scrollY<24&&document.documentElement.classList.contains('fx-done')){
+    away=false;going=true;
+    var v=document.createElement('div');v.className='fxveil';v.style.opacity=0;document.body.appendChild(v);
+    gsap.to(v,{opacity:1,duration:.3,onComplete:function(){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}location.reload()}})}
+},{passive:true});
 })();
 });
 })();
