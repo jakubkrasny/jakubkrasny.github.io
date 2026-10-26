@@ -1,6 +1,11 @@
 {
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "items": [
+  {
+   "date": "25. 10. 2026",
+   "title": "Lepší přehled kreditů v týmu a nová dokumentace Everbotu",
+   "url": "https://everbot.ai/novinky/lepsi-prehled-kreditu-v-tymu-a-nova-dokumentace-everbotu"
+  },
   {
    "date": "21. 10. 2026",
    "title": "Novinky v AI Audiu: rychlejší tvorba a hlas přímo v Chatu",
@@ -25,11 +30,6 @@
    "date": "8. 10. 2026",
    "title": "Nechte AI najít odpovědi na internetu",
    "url": "https://everbot.ai/novinky/nechte-ai-najit-odpovedi-na-internetu"
-  },
-  {
-   "date": "4. 10. 2026",
-   "title": "Vytvořte si chatbota pro web a nechte ho odpovídat za vás",
-   "url": "https://everbot.ai/novinky/vytvorte-si-chatbota-pro-web-a-nechte-ho-odpovidat-za-vas"
   }
  ]
 }
