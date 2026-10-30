@@ -1,6 +1,11 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "items": [
+  {
+   "date": "29. 10. 2026",
+   "title": "Novinky v Grafice a Videu: Wan 2.7, rychlejší výběr modelů a stabilnější generování",
+   "url": "https://everbot.ai/novinky/novinky-v-grafice-a-videu-wan-2-7-rychlejsi-vyber-modelu-a-stabilnejsi-generovani"
+  },
   {
    "date": "25. 10. 2026",
    "title": "Lepší přehled kreditů v týmu a nová dokumentace Everbotu",
@@ -25,11 +30,6 @@
    "date": "11. 10. 2026",
    "title": "Nové video modely v Everbotu: Runway Aleph 2.0 a Seedance 2.0",
    "url": "https://everbot.ai/novinky/nove-video-modely-v-everbotu-runway-aleph-2-0-a-seedance-2-0"
-  },
-  {
-   "date": "8. 10. 2026",
-   "title": "Nechte AI najít odpovědi na internetu",
-   "url": "https://everbot.ai/novinky/nechte-ai-najit-odpovedi-na-internetu"
   }
  ]
 }
