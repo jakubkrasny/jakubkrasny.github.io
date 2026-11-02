@@ -1,6 +1,11 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-02",
  "items": [
+  {
+   "date": "2. 11. 2026",
+   "title": "Oblíbené šablony a hromadné produktové popisky pro e-shopy",
+   "url": "https://everbot.ai/novinky/oblibene-sablony-a-hromadne-produktove-popisky-pro-e-shopy"
+  },
   {
    "date": "29. 10. 2026",
    "title": "Novinky v Grafice a Videu: Wan 2.7, rychlejší výběr modelů a stabilnější generování",
@@ -25,11 +30,6 @@
    "date": "14. 10. 2026",
    "title": "Everbot v září 2026: nové modely, jednodušší tvorba a více možností pro váš tým",
    "url": "https://everbot.ai/novinky/everbot-v-zari-2026-nove-modely-jednodussi-tvorba-a-vice-moznosti-pro-vas-tym"
-  },
-  {
-   "date": "11. 10. 2026",
-   "title": "Nové video modely v Everbotu: Runway Aleph 2.0 a Seedance 2.0",
-   "url": "https://everbot.ai/novinky/nove-video-modely-v-everbotu-runway-aleph-2-0-a-seedance-2-0"
   }
  ]
 }
