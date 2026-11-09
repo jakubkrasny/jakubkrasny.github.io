@@ -33,7 +33,7 @@ Pořadí je příběh, ne seznam sekcí: nabídka a citace Petry hned u tlačít
 
 ## Cílové skupiny a video
 
-Každá z pěti skupin má ilustraci z Everbotu (podnikatel, marketér, freelancer, tvůrce, vzdělávání) na námořnickém podkladu. Je u nich text „Ilustrace Everbotu“, ať to nikdo nečte jako klienta. V repozitáři jiné fotky rolí nejsou, jen vaše dvě z pódia. Když budete chtít vlastní záběry místo těchto výřezů, pošlete je.
+Podnikatel, freelancer a tvůrce obsahu mají nové krajinky z Everbotu (`img/podnikatel.webp`, `img/freelancer.webp`, `img/tvurce-obsahu.webp`). Pořád je u nich text „Ilustrace Everbotu“, nejsou to klienti. Marketér a vzdělávání zůstávají u starších výřezů. `img/pozadi-everbot.webp` je jemný podklad velké videorecenze, pod tmavým nádechem, ať text zůstane čitelný. Obrázky z LinkedIn na webu nejsou.
 
 Videorecenze jsou vpředu: velký Adam Filip s plakátem a přehráním na klik, pod tím karusel zbylých (Martin Tyšer, Jakub Fröhlich, Ondřej Holubec) a souhrnné video. YouTube se načte až po kliknutí.
 
