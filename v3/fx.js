@@ -11,7 +11,6 @@
   }
 
   ready(function () {
-    setupField();
     setupRails();
     setupMarquee();
     setupHeader();
@@ -19,8 +18,7 @@
     setupReveal();
     setupGlow();
     setupAvatar();
-    if (!reduce && root.classList.contains("fx")) setupIntro();
-    else root.classList.add("fx-done");
+    root.classList.add("fx-done");
   });
 
   /* ---------- podpisový efekt: Mátový proud ---------- */
@@ -149,7 +147,7 @@
     requestAnimationFrame(frame);
   }
 
-  /* Ukázky jedou jen podle pozice scrollu. Žádné šipky, žádný vlastní posun stránky. */
+  /* Posun karet řeší prohlížeč podle scroll-timeline. JS jen jednou změří délku. */
   function setupRails() {
     var views = [];
     document.querySelectorAll("[data-rail]").forEach(function (track) {
@@ -162,6 +160,23 @@
       views.push(view);
     });
     if (reduce || !views.length) return;
+    var native = false;
+    try { native = CSS.supports("animation-timeline", "view()"); } catch (e) { native = false; }
+    function measure() {
+      views.forEach(function (view) {
+        var track = view.firstElementChild;
+        if (!track) return;
+        var max = Math.max(0, track.scrollWidth - view.clientWidth);
+        track.style.setProperty("--pan", (-max) + "px");
+      });
+    }
+    measure();
+    addEventListener("resize", measure, { passive: true });
+    if (native) {
+      root.classList.add("rail-native");
+      return;
+    }
+    var tops = new WeakMap();
     var ticking = false;
     function place() {
       ticking = false;
@@ -169,29 +184,24 @@
       views.forEach(function (view) {
         var track = view.firstElementChild;
         if (!track) return;
-        var max = track.scrollWidth - view.clientWidth;
-        if (max <= 8) {
-          track.style.transform = "none";
-          return;
-        }
+        var max = 0;
+        var raw = track.style.getPropertyValue("--pan");
+        if (raw) max = Math.abs(parseFloat(raw)) || 0;
+        if (max < 8) return;
         var top = view.getBoundingClientRect().top;
-        var start = vh * 0.9;
-        var end = vh * 0.18;
-        var span = start - end;
-        var p = span > 0 ? (start - top) / span : 0;
+        var start = vh * 0.85;
+        var end = -view.offsetHeight * 0.2;
+        var p = (start - top) / (start - end);
         if (p < 0) p = 0;
         if (p > 1) p = 1;
-        var e = p * p * (3 - 2 * p);
-        track.style.transform = "translate3d(" + (-max * e).toFixed(1) + "px,0,0)";
+        track.style.transform = "translate3d(" + (-max * p).toFixed(2) + "px,0,0)";
       });
     }
-    function onScroll() {
+    addEventListener("scroll", function () {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(place);
-    }
-    addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", onScroll, { passive: true });
+    }, { passive: true });
     place();
   }
 
