@@ -149,55 +149,50 @@
     requestAnimationFrame(frame);
   }
 
-  /* ---------- karusely: nativní vodorovný posun, svislý scroll se nebere ---------- */
+  /* Ukázky jedou jen podle pozice scrollu. Žádné šipky, žádný vlastní posun stránky. */
   function setupRails() {
+    var views = [];
     document.querySelectorAll("[data-rail]").forEach(function (track) {
       var view = document.createElement("div");
       view.className = "rail-view";
-      var ui = document.createElement("div");
-      ui.className = "rail-ui";
-      ui.innerHTML = '<button type="button" class="rail-btn" data-dir="-1" aria-label="Předchozí">‹</button><button type="button" class="rail-btn" data-dir="1" aria-label="Další">›</button>';
-      track.parentNode.insertBefore(ui, track);
       track.parentNode.insertBefore(view, track);
       view.appendChild(track);
       track.classList.add("rail-track");
-      var originals = [].slice.call(track.children);
-      if (!reduce && originals.length > 1) {
-        originals.forEach(function (node) {
-          var clone = node.cloneNode(true);
-          clone.setAttribute("aria-hidden", "true");
-          clone.querySelectorAll("a,button").forEach(function (a) { a.tabIndex = -1; });
-          track.appendChild(clone);
-        });
-      }
-      var paused = false;
-      var speed = track.getAttribute("data-speed") || 0.45;
-      view.addEventListener("mouseenter", function () { paused = true; });
-      view.addEventListener("mouseleave", function () { paused = false; });
-      view.addEventListener("focusin", function () { paused = true; });
-      view.addEventListener("focusout", function () { paused = false; });
-      view.addEventListener("touchstart", function () { paused = true; }, { passive: true });
-      view.addEventListener("touchend", function () { setTimeout(function () { paused = false; }, 2800); }, { passive: true });
-      ui.addEventListener("click", function (e) {
-        var btn = e.target.closest("[data-dir]");
-        if (!btn) return;
-        paused = true;
-        view.scrollBy({ left: view.clientWidth * 0.72 * Number(btn.getAttribute("data-dir")), behavior: reduce ? "auto" : "smooth" });
-        setTimeout(function () { paused = false; }, 1600);
-      });
-      var playing = true;
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (en) { playing = en[0].isIntersecting; }, { threshold: 0.15 }).observe(view);
-      }
-      function tick() {
-        requestAnimationFrame(tick);
-        if (reduce || paused || !playing) return;
-        view.scrollLeft += Number(speed);
-        var half = track.scrollWidth / 2;
-        if (half > 0 && view.scrollLeft >= half) view.scrollLeft -= half;
-      }
-      if (!reduce) requestAnimationFrame(tick);
+      if (!reduce) view.classList.add("is-pan");
+      views.push(view);
     });
+    if (reduce || !views.length) return;
+    var ticking = false;
+    function place() {
+      ticking = false;
+      var vh = window.innerHeight || 800;
+      views.forEach(function (view) {
+        var track = view.firstElementChild;
+        if (!track) return;
+        var max = track.scrollWidth - view.clientWidth;
+        if (max <= 8) {
+          track.style.transform = "none";
+          return;
+        }
+        var top = view.getBoundingClientRect().top;
+        var start = vh * 0.9;
+        var end = vh * 0.18;
+        var span = start - end;
+        var p = span > 0 ? (start - top) / span : 0;
+        if (p < 0) p = 0;
+        if (p > 1) p = 1;
+        var e = p * p * (3 - 2 * p);
+        track.style.transform = "translate3d(" + (-max * e).toFixed(1) + "px,0,0)";
+      });
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(place);
+    }
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll, { passive: true });
+    place();
   }
 
   function setupMarquee() {
@@ -257,32 +252,6 @@
       });
     }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
     document.querySelectorAll(".rise").forEach(function (el) { io.observe(el); });
-    var proof = document.querySelector(".proof");
-    if (proof) {
-      var done = false;
-      new IntersectionObserver(function (en) {
-        if (!en[0].isIntersecting || done) return;
-        done = true;
-        proof.querySelectorAll("dd").forEach(function (dd) {
-          var raw = dd.textContent;
-          var m = raw.match(/[\d\s]+/);
-          if (!m) return;
-          var target = parseInt(m[0].replace(/\s/g, ""), 10);
-          if (!target) return;
-          var start = performance.now();
-          var dur = 900;
-          function step(now) {
-            var k = Math.min(1, (now - start) / dur);
-            var eased = 1 - Math.pow(1 - k, 3);
-            var n = Math.round(target * eased);
-            dd.innerHTML = raw.replace(m[0], n.toLocaleString("cs-CZ").replace(/\u00a0/g, " "));
-            if (k < 1) requestAnimationFrame(step);
-            else dd.textContent = raw;
-          }
-          requestAnimationFrame(step);
-        });
-      }, { threshold: 0.4 }).observe(proof);
-    }
   }
 
   function setupAvatar() {

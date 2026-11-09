@@ -1022,16 +1022,22 @@ html.fx:not(.fx-done) .lead.fx-show { opacity: 1; transition: opacity .4s; }
 .group h3, .group .group-lead, .group p { margin-left: 1rem; margin-right: 1rem; }
 .group p:last-child { margin-bottom: 0.2rem; }
 
-.rail-ui { display: flex; justify-content: flex-end; gap: 0.4rem; margin-top: 1rem; }
-.rail-btn {
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 1px solid var(--line); background: #fff; color: var(--navy);
-  font-size: 1.5rem; line-height: 1; cursor: pointer;
+.rail-ui, .rail-btn { display: none !important; }
+.rail-view { overflow: hidden; margin-top: 0.7rem; padding: 6px 0 16px; }
+.rail-view:not(.is-pan) .rail-track {
+  display: grid !important;
+  width: auto !important;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
 }
-.rail-btn:hover { border-color: var(--hot); }
-.rail-view { overflow-x: auto; scrollbar-width: none; margin-top: 0.7rem; }
-.rail-view::-webkit-scrollbar { display: none; }
-.rail-track { display: flex !important; gap: 0.85rem; width: max-content; margin-top: 0 !important; }
+.rail-view.is-pan .rail-track {
+  display: flex !important;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 0.85rem;
+  margin-top: 0 !important;
+  will-change: transform;
+}
 .rail-track > * { flex: 0 0 min(340px, 82vw) !important; grid-column: auto !important; height: auto !important; }
 .rail-track.quotes > * { flex-basis: min(400px, 86vw) !important; }
 .rail-track.videos > *, .rail-track.media > * { flex-basis: min(300px, 80vw) !important; }

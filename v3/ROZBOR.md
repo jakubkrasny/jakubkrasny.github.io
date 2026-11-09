@@ -1,5 +1,22 @@
 # Rozbor v3 proti živému webu
 
+## Co jsem vyčetl z Everbotu (9. 11. 2026)
+
+Zdroj: everbot.ai, everbot.ai/cenik, a podklady v Agent Store (everbot-reference, linkedin-strategy). Stránka `/funkce` vrací 404. E-shopy a obce Everbot na svém webu pořád jmenuje. Na jakubkrasny.cz je dál nejmenuji, podle dřívějšího rozhodnutí.
+
+**Kdo tam chodí.** Majitel a jednatel menší firmy ve službách nebo B2B (do 50 lidí). Marketér ve firmě zhruba 10–250 lidí. Obchodní ředitel je až druhá vlna. Česky, primárně Česko.
+
+**Co je bolí, jejich slovy.** Nemají čas a nevědí, kde s AI začít. Rutina: texty, nabídky, e-maily, zápisy z porad pořád dokola. Výstup z AI nezní jako oni. Chaos nástrojů a předplatných.
+
+**Jak Everbot mluví.** Krátce, česky, jeden systém pro celou firmu. „AI jednoduše.“ „Nemusíte sledovat novinky, porovnávat modely ani platit za desítky aplikací.“ Důkaz je konkrétní minuta (analýza za 5 minut, zápis za 30 sekund) a jména Westlogic, Visibility, Fexi. Vizuál: námořnická `#00072D`, zelená `#15DD58`, DM Sans, maskot, světlé plochy mezi tmavými bloky.
+
+**Námitky, které stránka má rozpustit dřív, než člověk dojde ke kalendáři.** Nemám čas. Už máme ChatGPT. Nechci řešit cenu naslepo. Zvládnu to? Kdo to podepíše? Musím se poradit s kolegou. Odpovědi jsou ve FAQ a v úvodu. Ceny na stránku nedávám: na everbot.ai/cenik jsou, ale výpis je neuspořádaný (v titulku 590 Kč, v kartách jiné částky) a obchodní podklad říká ceny ve veřejném obsahu neuvádět, dokud nejsou ověřené. Konzultace zůstává zdarma a bez závazku. Žádné slevové kódy.
+
+**Veřejné argumenty, které jsem směl použít.** Víc modelů na jednom místě. Česká podpora. Modely se podle everbot.ai neučí na datech zákazníků, na rozdíl od aplikací typu ChatGPT. Mezi funkcemi je Hlas značky. Čísla 30 000+ uživatelů, 4,7/5, Westlogic a Fexi jsou stejná jako na jejich webu i na dosavadním jakubkrasny.cz. Nic dalšího jsem nepřidal.
+
+**Ukázky.** Příklady, skupiny, důvody, citace, videa a média se posouvají jen podle polohy scrollu. Šipky nejsou. Stránka se nepřeskakuje. Video se spustí klikem na kartu.
+
+
 Druhé kolo: stránka má být na videohovoru „raketa“. Živý web, `/v2/`, nábor, akce ani CNAME jsem neměnil. Stránka má `noindex,nofollow`. Nadpis, fakta, citace a Cal.com zůstávají. Přibyl pohyb, karusely, podpisový efekt a vedení k rezervaci.
 
 ## Volba barev
@@ -22,7 +39,7 @@ V pozadí světlých sekcí je jemná vrstva maskota Everbotu. Na úvodu je mask
 ## Efekt, který jste chtěl zpátky
 
 - Úvodní efekt 4: okno Everbotu, psaní zadání, přepínání GPT / Claude / Gemini / Nano Banana, fotka se skládá ze šumu. Scroll zůstává normální. Když člověk sjede dřív, efekt se vzdá a text je hned vidět. Žádný skok přes zatmění, žádné znovunačtení stránky nahoře.
-- Karusely u příkladů, cílových skupin, důvodů Everbotu, citací, videí a médií. Šipky, pauza pod myší, na telefonu se to dá táhnout. Svislý scroll se nebere.
+- Ukázky (příklady, skupiny, důvody, citace, videa, média) nemají šipky ani tečky. Karty se posouvají jen podle toho, jak daleko jste na stránce. Rychlost scrollu se nemění a nic nepřeskakuje. Video se pořád spustí klikem na kartu. Na mobilu je to stejné, jen užší karty.
 - Běžící pás modelů a značek.
 - Světlo na kartách a jemný posun tlačítek pod kurzorem. Žádné lasery přes text a žádné modré kolečko.
 - Sekce při příjezdu lehce najedou. Čísla se dopočítají na konečnou hodnotu, která už na stránce je.
