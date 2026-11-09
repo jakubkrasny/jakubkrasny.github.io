@@ -4,15 +4,15 @@
   var title = document.getElementById("player-title");
 
   if (dialog && frame && title) {
-    document.querySelectorAll("[data-yt]").forEach(function (el) {
-      el.addEventListener("click", function (e) {
-        e.preventDefault();
-        var id = el.getAttribute("data-yt") || "";
-        if (!/^[A-Za-z0-9_-]{6,}$/.test(id)) return;
-        title.textContent = el.getAttribute("data-title") || "Videorecenze";
-        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
-        dialog.showModal();
-      });
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest && e.target.closest("[data-yt]");
+      if (!el) return;
+      e.preventDefault();
+      var id = el.getAttribute("data-yt") || "";
+      if (!/^[A-Za-z0-9_-]{6,}$/.test(id)) return;
+      title.textContent = el.getAttribute("data-title") || "Videorecenze";
+      frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+      if (typeof dialog.showModal === "function" && !dialog.open) dialog.showModal();
     });
 
     var closeBtn = dialog.querySelector("[data-close]");
