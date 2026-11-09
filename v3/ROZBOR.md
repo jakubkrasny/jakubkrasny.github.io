@@ -14,9 +14,9 @@ Zdroj: everbot.ai, everbot.ai/cenik, a podklady v Agent Store (everbot-reference
 
 **Veřejné argumenty, které jsem směl použít.** Víc modelů na jednom místě. Česká podpora. Modely se podle everbot.ai neučí na datech zákazníků, na rozdíl od aplikací typu ChatGPT. Mezi funkcemi je Hlas značky. Čísla 30 000+ uživatelů, 4,7/5, Westlogic a Fexi jsou stejná jako na jejich webu i na dosavadním jakubkrasny.cz. Nic dalšího jsem nepřidal.
 
-**Ukázky.** Příklady, skupiny, důvody, citace, videa a média se posouvají jen podle polohy scrollu, přes scroll-timeline v prohlížeči. JavaScript jen jednou změří šířku, při scrollu už nepřepočítává layout. Šipky nejsou. Video se spustí klikem na kartu.
+**Ukázky, kolo 7.** Vodorovné karusely vázané na scroll jsou pryč. V Safari se stránka zasekávala. Všechny bloky jsou teď pod sebou, v mřížce. Scroll je nativní, nic se nepřipíná a nic neposouvá do strany. Video se pořád spustí klikem.
 
-**Úvod, kolo 6.** Abstraktní WebGL pozadí jsem sundal. Působilo jako mapa. Místo něj je světlý úvod v mátové a fialové: fotka Jakuba a vedle něj se střídá text, grafika a video, ať je na první pohled vidět, že z jednoho zadání vznikne obsah. Nadpis a tlačítko na rezervaci jsou vidět hned. Pás log modelů (Everbot obsahuje) zůstává.
+**Úvod, kolo 7.** Na fotce není maskot, bublina ani karty. Je v rámu, ořez na obličej, pod ní jen jméno. Při načtení se nadpis vysune a fotka lehce dosedne. Při scrollu už se text neschovává, ať ho kolečko nerozřízne v půlce písmen. Stránka zůstává světlá.
 
 
 Druhé kolo: stránka má být na videohovoru „raketa“. Živý web, `/v2/`, nábor, akce ani CNAME jsem neměnil. Stránka má `noindex,nofollow`. Nadpis, fakta, citace a Cal.com zůstávají. Přibyl pohyb, karusely, podpisový efekt a vedení k rezervaci.
