@@ -1,6 +1,11 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "items": [
+  {
+   "date": "9. 11. 2026",
+   "title": "GPT-6, Claude 5.5 a dva noví specialisté: marketér a finanční poradce přímo v AI Chatu",
+   "url": "https://everbot.ai/novinky/gpt-6-claude-5-5-a-dva-novi-specialiste-marketer-a-financni-poradce-primo-v-ai-chatu"
+  },
   {
    "date": "5. 11. 2026",
    "title": "Přesnější Hluboký výzkum s GPT-5.6 Sol a Perplexity",
@@ -25,11 +30,6 @@
    "date": "21. 10. 2026",
    "title": "Novinky v AI Audiu: rychlejší tvorba a hlas přímo v Chatu",
    "url": "https://everbot.ai/novinky/novinky-v-ai-audiu-rychlejsi-tvorba-a-hlas-primo-v-chatu"
-  },
-  {
-   "date": "18. 10. 2026",
-   "title": "Everbot expanduje do Polska a přechází na doménu everbot.ai",
-   "url": "https://everbot.ai/novinky/everbot-expanduje-do-polska-a-prechazi-na-domenu-everbot-ai"
   }
  ]
 }
