@@ -14,7 +14,7 @@ Zdroj: everbot.ai, everbot.ai/cenik, a podklady v Agent Store (everbot-reference
 
 **Veřejné argumenty, které jsem směl použít.** Víc modelů na jednom místě. Česká podpora. Modely se podle everbot.ai neučí na datech zákazníků, na rozdíl od aplikací typu ChatGPT. Mezi funkcemi je Hlas značky. Čísla 30 000+ uživatelů, 4,7/5, Westlogic a Fexi jsou stejná jako na jejich webu i na dosavadním jakubkrasny.cz. Nic dalšího jsem nepřidal.
 
-**Ukázky.** Příklady, skupiny, důvody, citace, videa a média se posouvají jen podle polohy scrollu. Šipky nejsou. Stránka se nepřeskakuje. Video se spustí klikem na kartu.
+**Ukázky, kolo 10.** Vzhled je znovu z 4ce6dd9: mátový proud, námořnická se světlými plochami, úvodní efekt. Proud je vlnový, ne skvrny jako mapa. Na fotce není maskot ani bublina. Karty skupin, citací, videí a médií jsou v barevné mřížce, ne v pásu vázaném na scroll, ať to v Safari neskáče. Otázky jsou zkrácené na pět. Dvě fotky v „Proč já“ se překrývají. WebGL má nižší rozlišení a zastaví se, když záložka není vidět. Video se spustí klikem na kartu.
 
 
 Druhé kolo: stránka má být na videohovoru „raketa“. Živý web, `/v2/`, nábor, akce ani CNAME jsem neměnil. Stránka má `noindex,nofollow`. Nadpis, fakta, citace a Cal.com zůstávají. Přibyl pohyb, karusely, podpisový efekt a vedení k rezervaci.
