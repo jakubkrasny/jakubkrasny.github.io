@@ -16,6 +16,8 @@ Zdroj: everbot.ai, everbot.ai/cenik, a podklady v Agent Store (everbot-reference
 
 **Ukázky, kolo 7.** Vodorovné karusely vázané na scroll jsou pryč. V Safari se stránka zasekávala. Všechny bloky jsou teď pod sebou, v mřížce. Scroll je nativní, nic se nepřipíná a nic neposouvá do strany. Video se pořád spustí klikem.
 
+**Kolo 9.** Podklad za fotkou je rovný odskok doprava a dolů, jméno je pod ním s mezerou. Lepící tlačítko se nad sekcí „Jeden systém“ schová. Čísla v tmavém pásu se dopočítají. Struktura z kola 8 zůstala.
+
 **Kolo 8.** Stránka je znovu poskládaná. Fotka Jakuba je čistá, v rámu, za ní jen barevný podklad. Scroll je nativní. GSAP hýbe jen textem, ořezem fotek a pár milimetry hloubky. Nic se nepřipíná. Světlo v úvodu a v námořnické sekci je malý WebGL kruh, ne pozadí přes celou stránku. Sekce „Jeden systém“ je mřížka karet a nad ní pás 16:9 pro budoucí video značky (`data-src` na `.brand-film`, soubor `v3/video/znacka.mp4`). Dvě fotky v „Proč já“ se překrývají, nejsou pod sebou. Otázky jsou zkrácené na pět. Videorecenze zůstávají velké.
 
 

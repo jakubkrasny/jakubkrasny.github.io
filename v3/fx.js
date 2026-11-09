@@ -26,9 +26,10 @@
     var book = document.getElementById("rezervace");
     var heroGone = false;
     var bookOn = false;
+    var bentoOn = false;
     function paint() {
       if (header) header.classList.toggle("is-scrolled", heroGone);
-      if (dock) dock.classList.toggle("on", heroGone && !bookOn);
+      if (dock) dock.classList.toggle("on", heroGone && !bookOn && !bentoOn);
     }
     if (!("IntersectionObserver" in window)) return;
     if (hero) {
@@ -43,6 +44,13 @@
         bookOn = entries[0].isIntersecting;
         paint();
       }, { threshold: 0.12 }).observe(book);
+    }
+    var bento = document.getElementById("pro-koho");
+    if (bento) {
+      new IntersectionObserver(function (entries) {
+        bentoOn = entries[0].isIntersecting && entries[0].intersectionRatio > 0.08;
+        paint();
+      }, { threshold: [0, 0.08, 0.2, 0.45] }).observe(bento);
     }
   }
 
@@ -84,25 +92,23 @@
     el.style.textWrap = "wrap";
     var probes = words.map(function (word, i) {
       var s = document.createElement("span");
-      s.textContent = i < words.length - 1 ? word + "\u00A0" : word;
-      s.style.display = "inline";
+      s.textContent = word;
+      s.style.display = "inline-block";
       el.appendChild(s);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(" "));
       return s;
     });
     var groups = [];
     var line = [];
     var top = null;
-    var lh = parseFloat(window.getComputedStyle(el).lineHeight);
-    if (!lh || lh < 8) lh = 28;
-    var slack = lh * 0.55;
     probes.forEach(function (s) {
       var y = s.getBoundingClientRect().top;
-      if (top === null || Math.abs(y - top) < slack) {
-        line.push(s.textContent.replace(/\u00A0/g, ""));
-        if (top === null) top = y;
+      if (top === null || Math.abs(y - top) < 8) {
+        line.push(s.textContent);
+        top = y;
       } else {
         groups.push(line);
-        line = [s.textContent.replace(/\u00A0/g, "")];
+        line = [s.textContent];
         top = y;
       }
     });
@@ -264,6 +270,26 @@
         duration: 1.05,
         ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 90%", once: true }
+      });
+    });
+
+    document.querySelectorAll("[data-count]").forEach(function (el) {
+      var target = parseFloat(el.getAttribute("data-count"));
+      if (!isFinite(target)) return;
+      var suffix = el.getAttribute("data-suffix") || "";
+      var spaced = el.getAttribute("data-space") === "1";
+      var proxy = { n: 0 };
+      function paint() {
+        var v = Math.round(proxy.n);
+        var text = spaced ? String(v).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0") : String(v);
+        el.innerHTML = text + suffix;
+      }
+      gsap.to(proxy, {
+        n: target,
+        duration: 1.35,
+        ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        onUpdate: paint
       });
     });
 

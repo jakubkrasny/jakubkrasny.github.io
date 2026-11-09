@@ -133,11 +133,14 @@ h2 { font-size: clamp(2.05rem, 1.3rem + 2.2vw, 3.5rem); max-width: 16em; }
 .paper { background: #fff; }
 .narrow { max-width: 860px; }
 .portrait-wrap { position: relative; }
+.portrait-stage { position: relative; margin: 0 18px 30px 0; }
 .portrait-back {
   position: absolute; z-index: 0;
-  inset: 10% 0 -4% 10%;
+  top: 18px; left: 18px;
+  width: 100%; height: 100%;
   border-radius: 1.5rem;
-  background: linear-gradient(155deg, #15dd58 0%, #00072d 72%);
+  background: linear-gradient(148deg, #15dd58 0%, #00072d 64%);
+  pointer-events: none;
 }
 .portrait { position: relative; z-index: 1; }
 .hero-grid {
@@ -158,24 +161,26 @@ h2 { font-size: clamp(2.05rem, 1.3rem + 2.2vw, 3.5rem); max-width: 16em; }
 
 .portrait { margin: 0; }
 .portrait-mat {
-  position: relative;
+  position: relative; z-index: 1;
   border-radius: 1.4rem; overflow: hidden; background: #d7e6dc;
-  aspect-ratio: 4 / 5; box-shadow: 0 30px 70px rgba(0, 7, 45, 0.12);
+  aspect-ratio: 4 / 5; box-shadow: 0 24px 60px rgba(0, 7, 45, 0.14);
 }
 .portrait-mat picture { position: absolute; inset: 0; display: block; }
 .portrait-mat img {
   width: 100%; height: 118%; object-fit: cover; object-position: 42% 12%;
 }
 .portrait figcaption {
-  margin-top: 0.8rem; color: var(--muted); font-size: 0.75rem;
+  position: relative; z-index: 2;
+  margin-top: 0.95rem; color: var(--muted); font-size: 0.75rem;
   font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
 }
 
 .tone-navy {
   position: relative;
-  margin-top: -1.5rem;
-  padding-top: calc(var(--section) + 1.5rem);
-  background: linear-gradient(180deg, rgba(0, 7, 45, 0) 0%, #00072d 110px);
+  margin-top: -1.25rem;
+  padding-top: calc(var(--section) + 2.2rem);
+  padding-bottom: calc(var(--section) + 1.5rem);
+  background: linear-gradient(180deg, rgba(243, 250, 246, 0) 0%, #00072d 140px, #00072d calc(100% - 110px), #f3faf6 100%);
   color: #f4fff8;
   --muted: #c5d0de;
 }
