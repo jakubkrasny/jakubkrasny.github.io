@@ -1,6 +1,11 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "items": [
+  {
+   "date": "10. 11. 2026",
+   "title": "Everbot v říjnu 2026: AI agent, nahrávání schůzek a dalších 16 novinek",
+   "url": "https://everbot.ai/novinky/everbot-v-rijnu-2026-ai-agent-nahravani-schuzek-a-dalsich-16-novinek"
+  },
   {
    "date": "9. 11. 2026",
    "title": "GPT-6, Claude 5.5 a dva noví specialisté: marketér a finanční poradce přímo v AI Chatu",
@@ -25,11 +30,6 @@
    "date": "25. 10. 2026",
    "title": "Lepší přehled kreditů v týmu a nová dokumentace Everbotu",
    "url": "https://everbot.ai/novinky/lepsi-prehled-kreditu-v-tymu-a-nova-dokumentace-everbotu"
-  },
-  {
-   "date": "21. 10. 2026",
-   "title": "Novinky v AI Audiu: rychlejší tvorba a hlas přímo v Chatu",
-   "url": "https://everbot.ai/novinky/novinky-v-ai-audiu-rychlejsi-tvorba-a-hlas-primo-v-chatu"
   }
  ]
 }
