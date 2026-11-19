@@ -1,6 +1,11 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "items": [
+  {
+   "date": "18. 11. 2026",
+   "title": "Konec psaní poznámek: Everbot z porady připraví přepis, shrnutí i seznam úkolů",
+   "url": "https://everbot.ai/novinky/everbot-z-porady-pripravi-prepis-shrnuti-i-seznam-ukolu"
+  },
   {
    "date": "15. 11. 2026",
    "title": "Nechte AI pracovat za vás: AI agent, chatbot s XML feedem a chytřejší Chrome doplněk",
@@ -25,11 +30,6 @@
    "date": "2. 11. 2026",
    "title": "Oblíbené šablony a hromadné produktové popisky pro e-shopy",
    "url": "https://everbot.ai/novinky/oblibene-sablony-a-hromadne-produktove-popisky-pro-e-shopy"
-  },
-  {
-   "date": "29. 10. 2026",
-   "title": "Novinky v Grafice a Videu: Wan 2.7, rychlejší výběr modelů a stabilnější generování",
-   "url": "https://everbot.ai/novinky/novinky-v-grafice-a-videu-wan-2-7-rychlejsi-vyber-modelu-a-stabilnejsi-generovani"
   }
  ]
 }
