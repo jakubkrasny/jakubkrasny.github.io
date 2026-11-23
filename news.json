@@ -1,6 +1,11 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "items": [
+  {
+   "date": "22. 11. 2026",
+   "title": "Nový AI Chat: všechno důležité máte pod rukou a historie se načte v mžiku",
+   "url": "https://everbot.ai/novinky/novy-ai-chat-vsechno-dulezite-mate-pod-rukou-a-historie-se-nacte-v-mziku"
+  },
   {
    "date": "18. 11. 2026",
    "title": "Konec psaní poznámek: Everbot z porady připraví přepis, shrnutí i seznam úkolů",
@@ -25,11 +30,6 @@
    "date": "5. 11. 2026",
    "title": "Přesnější Hluboký výzkum s GPT-5.6 Sol a Perplexity",
    "url": "https://everbot.ai/novinky/presnejsi-hluboky-vyzkum-s-gpt-5-6-sol-a-perplexity"
-  },
-  {
-   "date": "2. 11. 2026",
-   "title": "Oblíbené šablony a hromadné produktové popisky pro e-shopy",
-   "url": "https://everbot.ai/novinky/oblibene-sablony-a-hromadne-produktove-popisky-pro-e-shopy"
   }
  ]
 }
