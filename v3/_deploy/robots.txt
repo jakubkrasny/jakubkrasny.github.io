@@ -1,0 +1,6 @@
+# Pro KOŘEN webu (jakubkrasny.cz/robots.txt) – nasadit až při přepnutí v3 na hlavní adresu.
+# /v2/, /v3/ a /nabor/ schválně neblokujeme: mají v HTML noindex a vyhledávač ho musí vidět.
+User-agent: *
+Allow: /
+
+Sitemap: https://jakubkrasny.cz/sitemap.xml

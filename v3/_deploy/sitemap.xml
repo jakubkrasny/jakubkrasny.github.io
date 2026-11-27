@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pro KOŘEN webu (jakubkrasny.cz/sitemap.xml) – nasadit až při přepnutí v3 na hlavní adresu. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://jakubkrasny.cz/</loc></url>
+  <url><loc>https://jakubkrasny.cz/soukromi/</loc></url>
+</urlset>
