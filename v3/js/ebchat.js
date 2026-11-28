@@ -6,12 +6,18 @@
   var SCRIPTS={
     hero:[
       {p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null},
-      {p:'Napiš follow-up e-mail po schůzce s potenciálním klientem. Shrň, na čem jsme se domluvili, a navrhni další krok.',m:'openai',n:'GPT-6.2 Sol',
-       a:'<p><strong>Předmět:</strong> Děkuji za schůzku – shrnutí a další krok</p><p>Dobrý den,</p><p>děkuji za dnešní čas a otevřený rozhovor. Pro přehled posílám, na čem jsme se shodli:</p><ul><li>hlavní cíl je zrychlit odpovídání na poptávky</li><li>začneme menším pilotem v jednom týmu</li><li>výsledky společně vyhodnotíme, než se rozhodnete o dalším postupu</li></ul><p><strong>Další krok:</strong> do konce týdne vám pošlu návrh pilotu. Hodí se vám krátký hovor příští týden?</p><p>S pozdravem</p>'},
-      {p:'Připrav inzerát na pozici obchodního zástupce. Krátce, lidsky a s jasným popisem, co bude dělat.',m:'gemini',n:'Gemini 3.1 Pro',
-       a:'<p><strong>Hledáme obchodního zástupce / zástupkyni</strong></p><p>Baví vás jednat s lidmi a dotahovat věci do konce? Přidejte se k nám.</p><p><strong>Co budete dělat</strong></p><ul><li>starat se o stávající zákazníky a hledat nové</li><li>připravovat nabídky a vést obchodní jednání</li><li>spolupracovat s marketingem na kampaních</li></ul><p><strong>Co nabízíme</strong></p><ul><li>samostatnou práci a férové jednání</li><li>zaškolení a podporu týmu</li></ul><p>Pošlete nám krátký životopis a pár vět o sobě.</p>'}
+      {p:'Tady jsou moje poznámky ze schůzky s klientem. Udělej z nich stručný zápis a seznam úkolů: kdo co a do kdy.',m:'openai',n:'GPT-6.2 Sol',
+       a:'<p><strong>Zápis ze schůzky</strong></p><ul><li>Klient chce zrychlit odpovídání na poptávky.</li><li>Dohodli jsme menší pilot v jednom týmu.</li><li>Výsledky vyhodnotíme společně před dalším rozhodnutím.</li></ul><p><strong>Úkoly</strong></p><ul><li><strong>Obchod:</strong> poslat návrh pilotu, do konce týdne</li><li><strong>Klient:</strong> určit tým a kontaktní osobu</li><li><strong>Marketing:</strong> připravit podklady k představení, do středy</li></ul>'},
+      {p:'Zítra mám první schůzku s novým klientem. Na co se ho zeptat, abych poznal, kde mu utíká nejvíc času?',m:'gemini',n:'Gemini 3.1 Pro',
+       a:'<p><strong>Otázky na první schůzku</strong></p><ul><li>Které úkoly se vám ve firmě opakují každý týden?</li><li>Co vás z nich nejvíc zdržuje nebo otravuje?</li><li>Kdo je dělá a kolik lidí se na nich střídá?</li><li>Jaké nástroje dnes používáte a co v nich chybí?</li><li>Co byste si přáli mít hotové dřív, než si sednete k počítači?</li></ul><p>Na závěr si shrňte tři nejčastější úkoly a navrhněte, který zkusit jako první.</p>'},
+      {p:'Přepiš tenhle text v našem Hlasu značky, ať zní lidsky a bez korporátních frází: „Dovolujeme si Vás informovat o možnosti využití našich služeb.“',m:'grok',n:'Grok 4.3',
+       a:'<p><strong>Ve stylu vaší značky</strong></p><p>Dobrý den, rádi vám ukážeme, jak by vám naše služby mohly ušetřit práci. Stačí odpovědět a domluvíme krátký hovor.</p><p><strong>Kratší varianta</strong></p><p>Ozvěte se, ukážeme vám, jak na to.</p>'}
     ],
-    show:[{p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null,picker:'Gemini 3.1 Pro'}]
+    show:[
+      {p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null,picker:'Gemini 3.1 Pro'},
+      {p:'Napiš popis produktu do e-shopu: ručně vyrobený keramický hrnek. Tři věty, hřejivý tón, bez klišé.',m:'openai',n:'GPT-6.2 Sol',picker:'Claude 5.5 Sonnet',
+       a:'<p><strong>Ručně vyrobený keramický hrnek</strong></p><p>Každý hrnek vzniká na hrnčířském kruhu, a tak není dvakrát stejný. Sedne vám do dlaně a udrží teplo čaje nebo kávy déle, než čekáte. Je to malý rituál, který si zasloužíte každé ráno.</p>'}
+    ]
   };
   function wrapWords(md){
     var walker=document.createTreeWalker(md,NodeFilter.SHOW_TEXT,null),nodes=[],n;
