@@ -77,6 +77,15 @@
     });
   }
 
+  /* ---------- fb2: Pro koho – nájezd karet a náklon za kurzorem ---------- */
+  var auds=$$('[data-aud]');
+  auds.forEach(function(c,k){c.style.setProperty('--k',k)});
+  if(auds.length){var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');aio.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:.12});auds.forEach(function(c){aio.observe(c)})}
+  if(finePointer&&!calm()){auds.forEach(function(c){var inr=c.querySelector('.aud-in');
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+      inr.style.transform='rotateX('+((.5-py)*9)+'deg) rotateY('+((px-.5)*11)+'deg) translateZ(14px)';inr.style.setProperty('--mx',px*100+'%');inr.style.setProperty('--my',py*100+'%')});
+    c.addEventListener('pointerleave',function(){inr.style.transform=''})})}
+
   /* ---------- Marquee ---------- */
   $$('[data-marquee]').forEach(function(m){if(calm())return;var ul=m.querySelector('ul');var clone=ul.innerHTML;ul.innerHTML+=clone+clone+clone;$$('li',ul).forEach(function(li,i){if(i>=ul.children.length/4)li.setAttribute('aria-hidden','true')});m.classList.add('run')});
 
@@ -104,9 +113,13 @@
     $$('a[href="#rezervace"]').forEach(function(a){a.addEventListener('click',loadCal)});
   }
 
-  /* ---------- Portrét ---------- */
-  var pcv=$('#portrait');
-  if(pcv&&window.Portrait){var pio=new IntersectionObserver(function(es){if(es[0].isIntersecting){Portrait.init(pcv);pio.disconnect()}},{rootMargin:'600px 0px'});pio.observe(pcv)}
+  /* ---------- Portrét (fb2): náklon a odlesk za kurzorem ---------- */
+  var pfig=$('#portrait-fig'),pcard=pfig&&$('.pf-card',pfig);
+  if(pfig&&finePointer&&!calm()){
+    pfig.addEventListener('pointermove',function(e){var r=pfig.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+      pcard.style.transform='rotateX('+((.5-py)*8)+'deg) rotateY('+((px-.5)*10)+'deg)';pfig.style.setProperty('--mx',px*100+'%');pfig.style.setProperty('--my',py*100+'%')});
+    pfig.addEventListener('pointerleave',function(){pcard.style.transform=''});
+  }
 
   /* ---------- GSAP: smooth scroll, časová osa, připnutá scéna ---------- */
   function initGsap(){
@@ -127,6 +140,17 @@
     if(show){gsap.fromTo(show,{rotationX:mobile?8:16,scale:mobile?.96:.92,y:mobile?20:50,transformOrigin:'50% 0%'},{rotationX:0,scale:1,y:0,ease:'none',scrollTrigger:{trigger:'.ebx-stage--show',start:'top 98%',end:'top 30%',scrub:.6}})}
     var hst=$('.ebx-stage--hero');
     if(hst&&!mobile){gsap.to(hst,{rotationX:10,y:60,scale:.96,transformOrigin:'50% 100%',ease:'none',scrollTrigger:{trigger:'#uvod',start:'top top',end:'bottom top',scrub:.5}})}
+
+    // Kdo jsem: fotka se odkryje z výřezu, zvětšená fotka dojede na místo, záře se rozsvítí
+    if(pfig){
+      var pimg=$('.portrait-photo',pfig),pglow=$('.pf-glow',pfig),ptag=$('.pf-tag',pfig);
+      var ptl=gsap.timeline({scrollTrigger:{trigger:pfig,start:'top 92%',end:'center 50%',scrub:.7}});
+      ptl.fromTo(pcard,{clipPath:'inset(22% 18% 22% 18% round 160px)'},{clipPath:'inset(0% 0% 0% 0% round 30px)',ease:'power2.out'},0)
+         .fromTo(pimg,{scale:1.35,yPercent:6},{scale:1.1,yPercent:0,ease:'power2.out'},0)
+         .fromTo(pglow,{opacity:0,scale:.6},{opacity:.55,scale:1,ease:'power1.out'},0)
+         .fromTo(ptag,{opacity:0,y:30},{opacity:1,y:0,ease:'power2.out'},.55);
+      gsap.to(pimg,{yPercent:-3,ease:'none',scrollTrigger:{trigger:pfig,start:'center 50%',end:'bottom top',scrub:true}});
+    }
 
     // čára časové osy
     var line=$('.timeline-line path');
