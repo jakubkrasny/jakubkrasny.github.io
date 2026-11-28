@@ -6,12 +6,12 @@
   var SCRIPTS={
     hero:[
       {p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null},
-      {p:'Tady jsou moje poznámky ze schůzky s klientem. Udělej z nich stručný zápis a seznam úkolů: kdo co a do kdy.',m:'openai',n:'GPT-6.2 Sol',
-       a:'<p><strong>Zápis ze schůzky</strong></p><ul><li>Klient chce zrychlit odpovídání na poptávky.</li><li>Dohodli jsme menší pilot v jednom týmu.</li><li>Výsledky vyhodnotíme společně před dalším rozhodnutím.</li></ul><p><strong>Úkoly</strong></p><ul><li><strong>Obchod:</strong> poslat návrh pilotu, do konce týdne</li><li><strong>Klient:</strong> určit tým a kontaktní osobu</li><li><strong>Marketing:</strong> připravit podklady k představení, do středy</li></ul>'},
-      {p:'Zítra mám první schůzku s novým klientem. Na co se ho zeptat, abych poznal, kde mu utíká nejvíc času?',m:'gemini',n:'Gemini 3.1 Pro',
-       a:'<p><strong>Otázky na první schůzku</strong></p><ul><li>Které úkoly se vám ve firmě opakují každý týden?</li><li>Co vás z nich nejvíc zdržuje nebo otravuje?</li><li>Kdo je dělá a kolik lidí se na nich střídá?</li><li>Jaké nástroje dnes používáte a co v nich chybí?</li><li>Co byste si přáli mít hotové dřív, než si sednete k počítači?</li></ul><p>Na závěr si shrňte tři nejčastější úkoly a navrhněte, který zkusit jako první.</p>'},
-      {p:'Přepiš tenhle text v našem Hlasu značky, ať zní lidsky a bez korporátních frází: „Dovolujeme si Vás informovat o možnosti využití našich služeb.“',m:'grok',n:'Grok 4.3',
-       a:'<p><strong>Ve stylu vaší značky</strong></p><p>Dobrý den, rádi vám ukážeme, jak by vám naše služby mohly ušetřit práci. Stačí odpovědět a domluvíme krátký hovor.</p><p><strong>Kratší varianta</strong></p><p>Ozvěte se, ukážeme vám, jak na to.</p>'}
+      {p:'Tady jsou moje poznámky z dnešní porady. Udělej z nich stručný zápis a seznam úkolů: kdo co a do kdy.',m:'openai',n:'GPT-6.2 Sol',
+       a:'<p><strong>Zápis z porady</strong></p><ul><li>Jarní kampaň připraví marketing a spustí se začátkem sezóny.</li><li>Texty na webu je potřeba sjednotit s novým katalogem.</li><li>Dodavatel potvrdí termín příští dodávky do konce týdne.</li></ul><p><strong>Úkoly</strong></p><ul><li><strong>Marketing:</strong> návrh kampaně, do středy</li><li><strong>Obchod:</strong> upravit texty nabídek, do pátku</li><li><strong>Sklad:</strong> ověřit termín u dodavatele, do konce týdne</li></ul>'},
+      {p:'Napiš krátký příspěvek na sociální sítě o tom, že jsme spustili nový e-shop. Věcně, lidsky, bez přehánění.',m:'gemini',n:'Gemini 3.1 Pro',
+       a:'<p><strong>Příspěvek na sítě</strong></p><p>Spustili jsme nový e-shop. Objednávka je teď přehlednější a jednodušší i na mobilu.</p><ul><li>nový katalog s filtry</li><li>platba kartou i převodem</li><li>sledování zásilky v účtu</li></ul><p>Budeme rádi za vaši zpětnou vazbu.</p>'},
+      {p:'Přepiš tenhle text, ať zní lidsky a bez korporátních frází: „Dovolujeme si Vás informovat, že Vaše objednávka byla předána k expedici.“',m:'grok',n:'Grok 4.3',
+       a:'<p><strong>Lidštěji</strong></p><p>Dobrý den, vaše objednávka je na cestě. Jakmile bude u dopravce, pošleme vám sledovací číslo.</p><p><strong>Kratší varianta</strong></p><p>Vaše objednávka už je zabalená a míří k vám. Sledovací číslo pošleme, jakmile ho budeme mít.</p>'}
     ],
     show:[
       {p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null,picker:'Gemini 3.1 Pro'},
