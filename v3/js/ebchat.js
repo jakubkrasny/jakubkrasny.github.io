@@ -5,11 +5,13 @@
   var calm=function(){return root.classList.contains('calm')||matchMedia('(prefers-reduced-motion: reduce)').matches};
   var SCRIPTS={
     hero:[
-      {p:'Z poznámek z porady udělej stručný zápis a seznam úkolů.',m:'claude',n:'Claude 5.5 Sonnet',a:null},
-      {p:'Napiš krátký příspěvek na LinkedIn o našem novém e-shopu. Věcně, bez přehánění.',m:'openai',n:'GPT-6.2 Sol',
-       a:'<p><strong>Příspěvek na LinkedIn</strong></p><p>Spustili jsme nový e-shop. Objednávka je teď přehlednější a jednodušší i na mobilu.</p><ul><li>nový katalog s filtry</li><li>platba kartou i převodem</li><li>sledování zásilky v účtu</li></ul><p>Děkujeme všem, kdo s námi testovali první verzi. Budeme rádi za vaši zpětnou vazbu.</p>'}
+      {p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null},
+      {p:'Napiš follow-up e-mail po schůzce s potenciálním klientem. Shrň, na čem jsme se domluvili, a navrhni další krok.',m:'openai',n:'GPT-6.2 Sol',
+       a:'<p><strong>Předmět:</strong> Děkuji za schůzku – shrnutí a další krok</p><p>Dobrý den,</p><p>děkuji za dnešní čas a otevřený rozhovor. Pro přehled posílám, na čem jsme se shodli:</p><ul><li>hlavní cíl je zrychlit odpovídání na poptávky</li><li>začneme menším pilotem v jednom týmu</li><li>výsledky společně vyhodnotíme, než se rozhodnete o dalším postupu</li></ul><p><strong>Další krok:</strong> do konce týdne vám pošlu návrh pilotu. Hodí se vám krátký hovor příští týden?</p><p>S pozdravem</p>'},
+      {p:'Připrav inzerát na pozici obchodního zástupce. Krátce, lidsky a s jasným popisem, co bude dělat.',m:'gemini',n:'Gemini 3.1 Pro',
+       a:'<p><strong>Hledáme obchodního zástupce / zástupkyni</strong></p><p>Baví vás jednat s lidmi a dotahovat věci do konce? Přidejte se k nám.</p><p><strong>Co budete dělat</strong></p><ul><li>starat se o stávající zákazníky a hledat nové</li><li>připravovat nabídky a vést obchodní jednání</li><li>spolupracovat s marketingem na kampaních</li></ul><p><strong>Co nabízíme</strong></p><ul><li>samostatnou práci a férové jednání</li><li>zaškolení a podporu týmu</li></ul><p>Pošlete nám krátký životopis a pár vět o sobě.</p>'}
     ],
-    show:[{p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null,picker:'GPT-6.2 Sol'}]
+    show:[{p:null,m:'claude',n:'Claude 5.5 Sonnet',a:null,picker:'Gemini 3.1 Pro'}]
   };
   function wrapWords(md){
     var walker=document.createTreeWalker(md,NodeFilter.SHOW_TEXT,null),nodes=[],n;
@@ -74,10 +76,12 @@
         await wait(1500);
         cursor.style.transition='none';moveCursor(q('.eba-act'),40,-10);cursor.offsetWidth;cursor.style.transition='';cursor.style.opacity=1;
         await wait(60);moveCursor(mp);await wait(950);mp.classList.add('is-press');await wait(180);mp.classList.remove('is-press');
-        cls('is-picker',true);await wait(700);
+        cls('is-picker',true);await wait(900);
         var target=rows.filter(function(r){return r.getAttribute('data-m')===s.picker})[0]||rows[2];
-        moveCursor(target,60);await wait(900);rows.forEach(function(r){r.classList.toggle('on',r===target)});await wait(450);
-        cls('is-picker',false);mpT.textContent=s.picker;mpIc.innerHTML='<svg class="mi"><use href="#em-openai"/></svg>';
+        var tour=rows.slice(1,Math.max(2,rows.indexOf(target)));
+        for(var h=0;h<tour.length;h++){moveCursor(tour[h],60);tour[h].classList.add('is-hover');await wait(650);tour[h].classList.remove('is-hover')}
+        moveCursor(target,60);await wait(800);rows.forEach(function(r){r.classList.toggle('on',r===target)});await wait(1400);
+        cls('is-picker',false);mpT.textContent=s.picker;mpIc.innerHTML='<svg class="mi"><use href="#em-'+(target.getAttribute('data-ic')||'openai')+'"/></svg>';
         moveCursor(mp);await wait(1100);cursor.style.opacity=0;await wait(1600);
       }else{await wait(3600)}
       cls('is-fade',true);await wait(600);
